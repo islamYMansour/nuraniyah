@@ -298,6 +298,40 @@ class AppTypography extends ThemeExtension<AppTypography> {
     );
   }
 
+  /// Returns a copy with every font size multiplied by [factor].
+  ///
+  /// Used by [AppTheme.responsiveBuilder] to apply
+  /// [AppBreakpoint.typeScale]. Heights are multipliers, not absolute values,
+  /// so they scale with the size automatically and are left alone.
+  AppTypography scaledBy(double factor) {
+    if (factor == 1) {
+      return this;
+    }
+    TextStyle scale(TextStyle style) =>
+        style.copyWith(fontSize: (style.fontSize ?? 0) * factor);
+
+    return AppTypography(
+      wordmark: scale(wordmark),
+      displayLarge: scale(displayLarge),
+      displayMedium: scale(displayMedium),
+      displaySmall: scale(displaySmall),
+      headlineLarge: scale(headlineLarge),
+      headlineMedium: scale(headlineMedium),
+      headlineSmall: scale(headlineSmall),
+      titleLarge: scale(titleLarge),
+      titleMedium: scale(titleMedium),
+      titleSmall: scale(titleSmall),
+      bodyLarge: scale(bodyLarge),
+      bodyMedium: scale(bodyMedium),
+      bodySmall: scale(bodySmall),
+      labelLarge: scale(labelLarge),
+      labelMedium: scale(labelMedium),
+      labelSmall: scale(labelSmall),
+      caption: scale(caption),
+      button: scale(button),
+    );
+  }
+
   @override
   AppTypography copyWith({
     TextStyle? wordmark,

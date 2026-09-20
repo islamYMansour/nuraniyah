@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'app_breakpoints.dart';
 import 'app_colors.dart';
 import 'app_elevation.dart';
 import 'app_radii.dart';
@@ -19,14 +20,67 @@ abstract final class AppTheme {
   /// Dark theme — the same tokens, inverted.
   static ThemeData get dark => _build(AppColors.dark, Brightness.dark);
 
+  /// Applies [AppBreakpoint.typeScale] to the whole theme.
+  ///
+  /// Pass it to `MaterialApp.builder` and every font size — in Noor's own
+  /// components *and* in raw Material widgets that read
+  /// `Theme.of(context).textTheme` — grows together on a tablet:
+  ///
+  /// ```dart
+  /// MaterialApp(
+  ///   theme: AppTheme.light,
+  ///   darkTheme: AppTheme.dark,
+  ///   builder: AppTheme.responsiveBuilder,
+  /// );
+  /// ```
+  ///
+  /// Without it the app still works; it simply keeps phone-sized type on a
+  /// tablet. Everything else that adapts — gutters, content width, column
+  /// counts, navigation — does so from the widget tree and needs no wiring.
+  static Widget responsiveBuilder(BuildContext context, Widget? child) {
+    final Widget content = child ?? const SizedBox.shrink();
+    final ThemeData ambient = Theme.of(context);
+    final double scale = AppBreakpoint.of(context).typeScale;
+
+    if (scale == 1) {
+      return content;
+    }
+
+    return Theme(
+      data: _scaled(ambient.brightness, scale),
+      child: content,
+    );
+  }
+
+  /// Rebuilt themes are cached: a [ThemeData] is not cheap to construct, and
+  /// `MaterialApp.builder` runs on every dependency change.
+  static final Map<(Brightness, double), ThemeData> _scaledCache =
+      <(Brightness, double), ThemeData>{};
+
+  static ThemeData _scaled(Brightness brightness, double scale) {
+    return _scaledCache.putIfAbsent(
+      (brightness, scale),
+      () => _build(
+        brightness == Brightness.dark ? AppColors.dark : AppColors.light,
+        brightness,
+        typeScale: scale,
+      ),
+    );
+  }
+
   /// Legacy alias kept so existing entry points keep compiling.
   static ThemeData get lightTheme => light;
 
   /// Legacy alias kept so existing entry points keep compiling.
   static ThemeData get darkTheme => dark;
 
-  static ThemeData _build(AppColors colors, Brightness brightness) {
-    final AppTypography typography = AppTypography.standard;
+  static ThemeData _build(
+    AppColors colors,
+    Brightness brightness, {
+    double typeScale = 1,
+  }) {
+    final AppTypography typography =
+        AppTypography.standard.scaledBy(typeScale);
     final TextTheme textTheme = typography.toTextTheme().apply(
           bodyColor: colors.textPrimary,
           displayColor: colors.textPrimary,

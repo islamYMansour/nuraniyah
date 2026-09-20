@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'app_breakpoints.dart';
 import 'app_colors.dart';
+import 'app_spacing.dart';
 import 'app_typography.dart';
 
 /// Short, safe access to Noor's design tokens from any widget.
@@ -36,4 +38,35 @@ extension AppThemeContext on BuildContext {
 
   /// True when the ambient direction is right-to-left.
   bool get isRtl => Directionality.of(this) == TextDirection.rtl;
+
+  // ── Window size ───────────────────────────────────────────────
+
+  /// The window size class this widget is being laid out in.
+  AppBreakpoint get breakpoint => AppBreakpoint.of(this);
+
+  /// True on a phone in portrait.
+  bool get isCompact => breakpoint.isCompact;
+
+  /// True on anything wider than a phone.
+  bool get isTablet => breakpoint.isTablet;
+
+  /// True on a landscape tablet or larger — where a navigation rail and a
+  /// two-pane layout start to pay off.
+  bool get isWide => breakpoint.isWide;
+
+  /// The left/right screen gutter for this window size.
+  double get screenPadding => breakpoint.screenPadding;
+
+  /// The gap between two major blocks of a screen at this window size.
+  double get sectionGap => breakpoint.sectionGap;
+
+  /// Screen gutters as an [EdgeInsets], widening with the window.
+  ///
+  /// Prefer this over the fixed [AppSpacing.screenInsets] for anything that
+  /// fills a screen — it is the difference between a layout that merely fits
+  /// on a tablet and one that belongs there.
+  EdgeInsets get screenInsets => EdgeInsets.symmetric(
+        horizontal: screenPadding,
+        vertical: AppSpacing.screenVertical,
+      );
 }

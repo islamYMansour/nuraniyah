@@ -4,6 +4,7 @@
 /// `design_system/design_system.dart` instead, which re-exports it.
 library;
 
+export 'app_breakpoints.dart';
 export 'app_colors.dart';
 export 'app_elevation.dart';
 export 'app_motion.dart';

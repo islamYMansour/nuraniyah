@@ -113,5 +113,32 @@ abstract final class AppSizing {
 
   /// Content stops widening past this on tablets and desktop, so lines of
   /// Arabic stay a comfortable measure.
+  ///
+  /// A per-window-size version lives on [AppBreakpoint.contentMaxWidth]; this
+  /// is the fixed fallback for places that have no context.
   static const double maxContentWidth = 600;
+
+  /// A full-width button stops growing here.
+  ///
+  /// `isFullWidth` means "fill the column", not "span the window" — a 1200pt
+  /// primary key looks like a mistake, and its label ends up marooned in the
+  /// middle of an empty bar.
+  static const double maxButtonWidth = 480;
+
+  /// A dialog's ceiling. Below this it tracks the window with its own insets.
+  static const double maxDialogWidth = 520;
+
+  /// A modal sheet's ceiling on a wide window, where a full-bleed sheet would
+  /// stretch the whole way across.
+  static const double maxSheetWidth = 640;
+
+  /// Width of the navigation rail that replaces the bottom bar on a landscape
+  /// tablet.
+  static const double navigationRailWidth = 88;
+
+  /// Width of the list pane in a two-pane tablet layout.
+  static const double sidePaneWidth = 360;
+
+  /// The character plate, enlarged for a tablet.
+  static const double medallionLarge = 280;
 }
