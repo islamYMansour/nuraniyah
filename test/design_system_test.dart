@@ -270,8 +270,7 @@ void main() {
       // AppButton's outermost node is an Align that fills the column on
       // purpose, so that the capped button centres inside it. The face is
       // the AppPressable underneath — that is what must stop growing.
-      final double face =
-          tester.getSize(find.byType(AppPressable).first).width;
+      final double face = tester.getSize(find.byType(AppPressable).first).width;
       expect(face, lessThanOrEqualTo(AppSizing.maxButtonWidth));
       expect(
         tester.getSize(find.byType(AppButton)).width,
