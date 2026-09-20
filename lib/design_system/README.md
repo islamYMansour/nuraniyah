@@ -31,22 +31,101 @@ Container(
 The raw brand ramp is `private` inside `app_colors.dart`, so reaching past the
 semantic layer is not possible from UI code — it will not compile.
 
-## Files
+## Layout
+
+```
+design_system/
+├── theme/          tokens + the Material theme built from them
+├── icons/          AppIcons, organised by purpose
+├── components/     the reusable component library
+│   ├── buttons/ textfields/ selection/ chips/ cards/
+│   ├── navigation/ feedback/ dialogs/ lists/ avatars/ common/
+├── gallery/        the preview harness (a dev tool, not app code)
+└── design_system.dart   ← the only file app code imports
+```
 
 | File | Holds |
 | --- | --- |
-| `app_colors.dart` | The private brand ramp, plus `AppColors` — the semantic colour tokens, as a `ThemeExtension`. |
-| `app_typography.dart` | `AppFontFamily`, `AppFontWeight`, `AppFontSize`, `AppLineHeight`, `AppLetterSpacing`, plus `AppTypography` — the semantic text styles, as a `ThemeExtension`. |
-| `app_spacing.dart` | `AppSpacing` (the 4pt gap ramp) and `AppSizing` (touch targets, button heights, icon and imagery sizes, stroke widths). |
-| `app_radii.dart` | `AppRadius` (the radius ramp), `AppRadii` (ready-made `BorderRadius` by role), `AppShapes` (the same as `ShapeBorder`s). |
-| `app_elevation.dart` | `AppElevation` — the solid-slab depth that Noor's buttons use, plus the soft shadows for cards, sheets and overlays. |
-| `app_theme.dart` | `AppTheme.light` / `AppTheme.dark` — the only place tokens are wired into Material. |
-| `app_theme_context.dart` | `context.colors`, `context.typography`, `context.isRtl`. |
-| `design_system.dart` | Barrel. Import **this** file, not the individual ones. |
+| `theme/app_colors.dart` | The private brand ramp, plus `AppColors` — the semantic colour tokens, as a `ThemeExtension`. |
+| `theme/app_typography.dart` | `AppFontFamily`, `AppFontWeight`, `AppFontSize`, `AppLineHeight`, `AppLetterSpacing`, plus `AppTypography`. |
+| `theme/app_spacing.dart` | `AppSpacing` (the 4pt gap ramp) and `AppSizing` (touch targets, button heights, icon and imagery sizes, stroke widths). |
+| `theme/app_radii.dart` | `AppRadius` (the ramp), `AppRadii` (`BorderRadius` by role), `AppShapes` (the same as `ShapeBorder`s). |
+| `theme/app_elevation.dart` | `AppElevation` — the solid-slab depth Noor's buttons use, plus soft shadows for cards, sheets and overlays. |
+| `theme/app_motion.dart` | `AppDuration` and `AppCurves`. |
+| `theme/app_theme.dart` | `AppTheme.light` / `AppTheme.dark` — the only place tokens are wired into Material. |
+| `theme/app_theme_context.dart` | `context.colors`, `context.typography`, `context.isRtl`. |
+| `icons/app_icons.dart` | Every icon the app names, on Flutter's bundled Material font. |
 
-Flutter has no `Shapes.kt`; `app_radii.dart` plus `app_elevation.dart` are its
-equivalent, and `app_theme.dart` applies them through Material's component
-themes.
+Flutter has no `Shapes.kt`; `theme/app_radii.dart` plus `theme/app_elevation.dart`
+are its equivalent, and `theme/app_theme.dart` applies them through Material's
+component themes.
+
+## Components
+
+Every component is presentational — values in, callbacks out. None of them
+knows about a screen, a route, a repository or a model.
+
+`AppPressable` is the one to understand first: it is the shared interaction
+primitive that renders the design's solid slab, animates it away on press
+while the face travels down, and carries hover, keyboard focus (with a visible
+ring), press, disabled and semantics. Buttons, cards, chips and list rows all
+compose it rather than re-implementing any of that, which is why they all feel
+identical under the finger.
+
+| Group | Components |
+| --- | --- |
+| Buttons | `AppButton` (`.primary` `.secondary` `.outlined` `.text` `.danger` × 3 sizes, with icon, loading, full-width), `AppIconButton` (plain/tonal/filled), `AppFab` (icon-only or extended) |
+| Text fields | `AppTextField` (+ `.number`, `.multiline`), `AppSearchField`, `AppPasswordField` |
+| Selection | `AppCheckbox` (incl. tristate), `AppRadioGroup` + `AppRadioOption`, `AppSwitch`, `AppSegmentedControl` + `AppSegment`, `AppDropdown` + `AppDropdownItem` |
+| Chips & tags | `AppChip` (assist / filter / input), `AppTag` (7 tones) |
+| Containers | `AppCard` (filled / elevated / outlined, tappable, selectable), `AppSurface` (+ `.circle`), `AppSection`, `AppDivider` (+ `.vertical`) |
+| Navigation | `AppAppBar`, `AppBackButton`, `AppBottomNav` + `AppNavDestination`, `AppTabBar` + `AppTab` |
+| Feedback | `AppMessage` (success/warning/error/info), `AppSnackbar` helpers, `AppEmptyState`, `AppLoadingState`, `AppProgressIndicator`, `AppProgressBar`, `AppSkeleton` (+ `.text`, `.circle`), `AppSkeletonParagraph` |
+| Dialogs | `AppDialog`, `AppDialogs.alert/confirm/custom`, `AppBottomSheet`, `AppBottomSheets.show` |
+| Lists | `AppListItem`, `AppExpandableListItem`, `AppListSectionHeader` |
+| Identity | `AppAvatar` (4 sizes, image → initials → glyph fallback), `AppBadge` (+ `.dot`) |
+| Common | `AppPressable`, `AppTooltip` |
+
+### States
+
+Interactive components handle default, hover, pressed, focused, selected,
+disabled, loading and error, all coloured from the tokens. Two rules worth
+knowing:
+
+* **Nothing interactive is smaller than 48pt.** Noor is used by children,
+  whose taps are less precise than an adult's. Checkbox, radio and switch rows
+  are tappable across their whole width, not just on the control.
+* **Loading never moves the layout.** A button in `isLoading` keeps its exact
+  size and swaps its content for a spinner.
+
+### What was deliberately not built
+
+Date picker, time picker, calendar, pagination and a navigation drawer. Nothing
+in the design calls for them, and a speculative component is a component that
+gets built twice. Add them when a screen needs one.
+
+`AppTextField` also covers the "number", "multiline" and "read-only" cases
+through named constructors and flags rather than separate widgets — same API,
+no duplication.
+
+## The gallery
+
+`gallery/design_system_gallery.dart` is a live catalogue: every token and every
+component, with toggles for light/dark and RTL/LTR. It is a **test harness, not
+an application screen**, and is deliberately not exported from
+`design_system.dart`.
+
+To look at it, point the entry point at it temporarily:
+
+```dart
+import 'package:nuraniyah_app/design_system/gallery/gallery.dart';
+
+MaterialApp(home: const DesignSystemGallery());
+```
+
+The LTR toggle is the quickest way to catch a component that used `left`/`right`
+where it should have used `start`/`end`. `test/design_system_test.dart` pumps
+the whole gallery through both themes and both directions on every test run.
 
 ## Colour tokens
 
