@@ -11,6 +11,7 @@ export 'chips/chips.dart';
 export 'common/common.dart';
 export 'dialogs/dialogs.dart';
 export 'feedback/feedback.dart';
+export 'layout/layout.dart';
 export 'lists/lists.dart';
 export 'navigation/navigation.dart';
 export 'selection/selection.dart';
