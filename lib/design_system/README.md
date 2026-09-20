@@ -108,10 +108,79 @@ gets built twice. Add them when a screen needs one.
 through named constructors and flags rather than separate widgets — same API,
 no duplication.
 
+## Tablets and window sizes
+
+Noor runs on phones and tablets, and a phone layout stretched to 1366pt is not
+a tablet layout. The system adapts through **window size classes**, never
+through raw pixel widths written into a screen.
+
+| Class | Width | Typical device | Gutter | Grid | Type |
+| --- | --- | --- | --- | --- | --- |
+| `compact` | < 600 | phone, portrait | 24 | 2 | ×1.0 |
+| `medium` | 600–839 | tablet portrait, phone landscape | 32 | 3 | ×1.05 |
+| `expanded` | 840–1199 | tablet landscape | 48 | 4 | ×1.1 |
+| `large` | ≥ 1200 | 12.9" landscape, desktop | 64 | 5 | ×1.1 |
+
+Read the class with `context.breakpoint`, or the shorthands `context.isCompact`
+/ `isTablet` / `isWide`. For gutters use `context.screenInsets` and
+`context.sectionGap`, which widen on their own. For anything else, pick per
+class with `AppResponsive.value`, which falls back to the nearest narrower
+class so you specify only where the design actually changes:
+
+```dart
+final double size = AppResponsive.value<double>(
+  context,
+  compact: AppSizing.medallion,      // 200
+  expanded: AppSizing.medallionLarge, // 280
+);
+```
+
+### The four layout components
+
+| Component | What it does |
+| --- | --- |
+| `AppContentContainer` | Centres and caps a screen's body, with gutters that widen. **Wrap every screen in one.** |
+| `AppAdaptiveGrid` | Column count from the window, or fitted to a `minTileWidth` inside a narrow pane. |
+| `AppTwoPane` | One pane on a phone, list-and-detail side by side on a landscape tablet. |
+| `AppResponsiveBuilder` | A genuinely different tree per class, for when looser spacing is not enough. |
+
+`AppContentContainer` is the one that matters most. Without it a paragraph of
+Arabic runs the full width of a 12.9" tablet — technically correct, unreadable
+in practice.
+
+### Navigation
+
+`AppAdaptiveNavigation` takes one destination list and puts it where the window
+has room: a bottom bar on a phone or portrait tablet, an `AppNavigationRail`
+down the leading edge on a landscape tablet. A bottom bar on a landscape tablet
+wastes the widest edge of the screen and puts the controls where a child's
+hands are not.
+
+### Components that already stop growing
+
+`AppButton` (`isFullWidth` caps at 480 and centres — pass
+`maxWidth: double.infinity` to opt out), `AppDialog`, `AppBottomSheets` and
+`AppEmptyState`. Nothing else in the library tracks the window without limit.
+
+### Type scale
+
+`AppTheme.responsiveBuilder` is wired into `MaterialApp.builder` in
+`lib/main.dart`. It rebuilds the whole `ThemeData` at the class's scale — not
+just the `AppTypography` extension — so Material's own widgets grow in step
+with Noor's rather than drifting apart. Scaled themes are cached.
+
+The scale is deliberately gentle (×1.0 → ×1.1). Noor's type is already large
+for a reading app; the real adaptation is gutters, content width and column
+count. Remove the `builder:` line and everything still works — the app simply
+keeps phone-sized type on a tablet.
+
 ## The gallery
 
 `gallery/design_system_gallery.dart` is a live catalogue: every token and every
-component, with toggles for light/dark and RTL/LTR. It is a **test harness, not
+component, with toggles for light/dark and RTL/LTR. Its **Layout** tab reads
+out the current window class and renders the adaptive components at simulated
+phone and tablet sizes side by side, by overriding `MediaQuery` — so the
+previews are honest whatever device you are running on. It is a **test harness, not
 an application screen**, and is deliberately not exported from
 `design_system.dart`.
 

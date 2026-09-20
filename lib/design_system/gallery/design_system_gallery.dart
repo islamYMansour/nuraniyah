@@ -4,6 +4,7 @@ import '../design_system.dart';
 import 'sections/controls_section.dart';
 import 'sections/feedback_section.dart';
 import 'sections/foundations_section.dart';
+import 'sections/layout_section.dart';
 import 'sections/surfaces_section.dart';
 
 /// A live catalogue of the design system.
@@ -41,6 +42,7 @@ class _DesignSystemGalleryState extends State<DesignSystemGallery> {
 
   static const List<AppTab> _tabs = <AppTab>[
     AppTab(label: 'Foundations'),
+    AppTab(label: 'Layout'),
     AppTab(label: 'Controls'),
     AppTab(label: 'Surfaces'),
     AppTab(label: 'Feedback'),
@@ -56,48 +58,54 @@ class _DesignSystemGalleryState extends State<DesignSystemGallery> {
         textDirection: _direction,
         child: Builder(
           // A Builder so the descendants below read the overridden theme and
-          // direction, not the host app's.
+          // direction, not the host app's. responsiveBuilder then applies the
+          // window's type scale, exactly as MaterialApp.builder does in the
+          // real app.
           builder: (BuildContext context) {
-            return DefaultTabController(
-              length: _tabs.length,
-              child: Scaffold(
-                backgroundColor: context.colors.background,
-                appBar: AppAppBar(
-                  title: 'Design System',
-                  centerTitle: false,
-                  hasBorder: true,
-                  actions: <Widget>[
-                    AppIconButton(
-                      icon: _direction == TextDirection.rtl
-                          ? AppIcons.forward
-                          : AppIcons.back,
-                      tooltip: _direction == TextDirection.rtl
-                          ? 'Switch to LTR'
-                          : 'Switch to RTL',
-                      onPressed: () => setState(
-                        () => _direction = _direction == TextDirection.rtl
-                            ? TextDirection.ltr
-                            : TextDirection.rtl,
+            return AppTheme.responsiveBuilder(
+              context,
+              DefaultTabController(
+                length: _tabs.length,
+                child: Scaffold(
+                  backgroundColor: context.colors.background,
+                  appBar: AppAppBar(
+                    title: 'Design System',
+                    centerTitle: false,
+                    hasBorder: true,
+                    actions: <Widget>[
+                      AppIconButton(
+                        icon: _direction == TextDirection.rtl
+                            ? AppIcons.forward
+                            : AppIcons.back,
+                        tooltip: _direction == TextDirection.rtl
+                            ? 'Switch to LTR'
+                            : 'Switch to RTL',
+                        onPressed: () => setState(
+                          () => _direction = _direction == TextDirection.rtl
+                              ? TextDirection.ltr
+                              : TextDirection.rtl,
+                        ),
                       ),
-                    ),
-                    AppIconButton(
-                      icon: AppIcons.theme,
-                      tooltip: _isDark
-                          ? 'Switch to light theme'
-                          : 'Switch to dark theme',
-                      isSelected: _isDark,
-                      onPressed: () => setState(() => _isDark = !_isDark),
-                    ),
-                  ],
-                  bottom: const AppTabBar(tabs: _tabs, isScrollable: true),
-                ),
-                body: const TabBarView(
-                  children: <Widget>[
-                    FoundationsSection(),
-                    ControlsSection(),
-                    SurfacesSection(),
-                    FeedbackSection(),
-                  ],
+                      AppIconButton(
+                        icon: AppIcons.theme,
+                        tooltip: _isDark
+                            ? 'Switch to light theme'
+                            : 'Switch to dark theme',
+                        isSelected: _isDark,
+                        onPressed: () => setState(() => _isDark = !_isDark),
+                      ),
+                    ],
+                    bottom: const AppTabBar(tabs: _tabs, isScrollable: true),
+                  ),
+                  body: const TabBarView(
+                    children: <Widget>[
+                      FoundationsSection(),
+                      LayoutSection(),
+                      ControlsSection(),
+                      SurfacesSection(),
+                      FeedbackSection(),
+                    ],
+                  ),
                 ),
               ),
             );

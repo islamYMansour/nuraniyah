@@ -6,9 +6,7 @@ import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -23,6 +21,10 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
+      // Scales type with the window size class, so a tablet does not get
+      // phone-sized text. Everything else that adapts does so from the
+      // widget tree and needs no wiring.
+      builder: AppTheme.responsiveBuilder,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
