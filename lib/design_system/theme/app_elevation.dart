@@ -38,9 +38,7 @@ abstract final class AppElevation {
     Color color, {
     double offset = AppSizing.buttonShadowOffset,
   }) {
-    return <BoxShadow>[
-      BoxShadow(color: color, offset: Offset(0, offset)),
-    ];
+    return <BoxShadow>[BoxShadow(color: color, offset: Offset(0, offset))];
   }
 
   /// Resting depth for a card or tile.

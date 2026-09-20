@@ -35,9 +35,9 @@ class AppBottomNav extends StatelessWidget {
     required this.destinations,
     required this.onDestinationSelected,
   }) : assert(
-          destinations.length >= 2 && destinations.length <= 5,
-          'A bottom bar carries between two and five destinations.',
-        );
+         destinations.length >= 2 && destinations.length <= 5,
+         'A bottom bar carries between two and five destinations.',
+       );
 
   final int currentIndex;
   final List<AppNavDestination> destinations;

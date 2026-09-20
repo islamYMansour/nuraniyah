@@ -17,13 +17,9 @@ class AppBadge extends StatelessWidget {
   });
 
   /// A dot with no number.
-  const AppBadge.dot({
-    super.key,
-    this.child,
-    this.color,
-    this.isVisible = true,
-  })  : count = null,
-        label = null;
+  const AppBadge.dot({super.key, this.child, this.color, this.isVisible = true})
+    : count = null,
+      label = null;
 
   /// Counts above 99 render as "99+". Zero hides the badge.
   final int? count;
@@ -99,10 +95,7 @@ class _Marker extends StatelessWidget {
       height: AppSpacing.xl,
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
       alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: background,
-        borderRadius: AppRadii.chip,
-      ),
+      decoration: BoxDecoration(color: background, borderRadius: AppRadii.chip),
       child: Text(
         text!,
         style: context.typography.labelSmall.copyWith(color: foreground),

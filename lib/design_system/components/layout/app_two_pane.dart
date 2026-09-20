@@ -59,9 +59,7 @@ class AppTwoPane extends StatelessWidget {
       children: <Widget>[
         SizedBox(width: paneWidth, child: pane),
         if (showDivider) const AppDivider.vertical(),
-        Expanded(
-          child: detail ?? placeholder ?? const SizedBox.shrink(),
-        ),
+        Expanded(child: detail ?? placeholder ?? const SizedBox.shrink()),
       ],
     );
   }

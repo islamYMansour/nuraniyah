@@ -79,8 +79,9 @@ class AppSwitch extends StatelessWidget {
                       const SizedBox(height: AppSpacing.xxs),
                       Text(
                         supportingText!,
-                        style: typography.caption
-                            .copyWith(color: colors.textSecondary),
+                        style: typography.caption.copyWith(
+                          color: colors.textSecondary,
+                        ),
                       ),
                     ],
                   ],

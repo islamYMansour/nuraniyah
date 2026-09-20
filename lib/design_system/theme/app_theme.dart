@@ -46,10 +46,7 @@ abstract final class AppTheme {
       return content;
     }
 
-    return Theme(
-      data: _scaled(ambient.brightness, scale),
-      child: content,
-    );
+    return Theme(data: _scaled(ambient.brightness, scale), child: content);
   }
 
   /// Rebuilt themes are cached: a [ThemeData] is not cheap to construct, and
@@ -79,12 +76,11 @@ abstract final class AppTheme {
     Brightness brightness, {
     double typeScale = 1,
   }) {
-    final AppTypography typography =
-        AppTypography.standard.scaledBy(typeScale);
+    final AppTypography typography = AppTypography.standard.scaledBy(typeScale);
     final TextTheme textTheme = typography.toTextTheme().apply(
-          bodyColor: colors.textPrimary,
-          displayColor: colors.textPrimary,
-        );
+      bodyColor: colors.textPrimary,
+      displayColor: colors.textPrimary,
+    );
 
     final ColorScheme colorScheme = ColorScheme(
       brightness: brightness,
@@ -141,7 +137,9 @@ abstract final class AppTheme {
         elevation: AppElevation.level0,
         scrolledUnderElevation: AppElevation.level0,
         centerTitle: true,
-        titleTextStyle: typography.titleLarge.copyWith(color: colors.textPrimary),
+        titleTextStyle: typography.titleLarge.copyWith(
+          color: colors.textPrimary,
+        ),
         iconTheme: IconThemeData(
           color: colors.textPrimary,
           size: AppSizing.iconMedium,
@@ -173,8 +171,12 @@ abstract final class AppTheme {
         surfaceTintColor: Colors.transparent,
         elevation: AppElevation.level3,
         shape: AppShapes.dialog,
-        titleTextStyle: typography.headlineSmall.copyWith(color: colors.textPrimary),
-        contentTextStyle: typography.bodyMedium.copyWith(color: colors.textSecondary),
+        titleTextStyle: typography.headlineSmall.copyWith(
+          color: colors.textPrimary,
+        ),
+        contentTextStyle: typography.bodyMedium.copyWith(
+          color: colors.textSecondary,
+        ),
       ),
 
       bottomSheetTheme: BottomSheetThemeData(
@@ -312,8 +314,9 @@ abstract final class AppTheme {
 
       snackBarTheme: SnackBarThemeData(
         backgroundColor: colors.surfaceInverse,
-        contentTextStyle:
-            typography.bodyMedium.copyWith(color: colors.onSurfaceInverse),
+        contentTextStyle: typography.bodyMedium.copyWith(
+          color: colors.onSurfaceInverse,
+        ),
         actionTextColor: colors.primary,
         behavior: SnackBarBehavior.floating,
         elevation: AppElevation.level2,
@@ -343,9 +346,12 @@ abstract final class AppTheme {
       listTileTheme: ListTileThemeData(
         iconColor: colors.textSecondary,
         textColor: colors.textPrimary,
-        titleTextStyle: typography.titleMedium.copyWith(color: colors.textPrimary),
-        subtitleTextStyle:
-            typography.bodySmall.copyWith(color: colors.textSecondary),
+        titleTextStyle: typography.titleMedium.copyWith(
+          color: colors.textPrimary,
+        ),
+        subtitleTextStyle: typography.bodySmall.copyWith(
+          color: colors.textSecondary,
+        ),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.lg,
           vertical: AppSpacing.sm,

@@ -128,7 +128,8 @@ class _AppPressableState extends State<AppPressable>
         enabled: _isEnabled,
         focusNode: widget.focusNode,
         autofocus: widget.autofocus,
-        mouseCursor: widget.mouseCursor ??
+        mouseCursor:
+            widget.mouseCursor ??
             (_isEnabled ? SystemMouseCursors.click : SystemMouseCursors.basic),
         onShowHoverHighlight: (bool value) =>
             setState(() => _isHovered = value),

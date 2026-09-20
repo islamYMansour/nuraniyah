@@ -30,9 +30,9 @@ class AppSurface extends StatelessWidget {
     this.padding,
     this.border,
     this.alignment = Alignment.center,
-  })  : borderRadius = AppRadii.chip,
-        width = size,
-        height = size;
+  }) : borderRadius = AppRadii.chip,
+       width = size,
+       height = size;
 
   final Widget child;
 

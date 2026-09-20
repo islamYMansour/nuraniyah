@@ -24,11 +24,17 @@ class FoundationsSection extends StatelessWidget {
               label: 'Brand',
               swatches: <_Swatch>[
                 _Swatch('primary', c.primary, c.onPrimary),
-                _Swatch('primaryContainer', c.primaryContainer,
-                    c.onPrimaryContainer),
+                _Swatch(
+                  'primaryContainer',
+                  c.primaryContainer,
+                  c.onPrimaryContainer,
+                ),
                 _Swatch('secondary', c.secondary, c.onSecondary),
-                _Swatch('secondaryContainer', c.secondaryContainer,
-                    c.onSecondaryContainer),
+                _Swatch(
+                  'secondaryContainer',
+                  c.secondaryContainer,
+                  c.onSecondaryContainer,
+                ),
               ],
             ),
             _Swatches(
@@ -75,26 +81,56 @@ class FoundationsSection extends StatelessWidget {
           description: 'Arabic-first: zero tracking, generous line height.',
           children: <Widget>[
             _TypeRow('wordmark 56/800', context.typography.wordmark, 'نُور'),
-            _TypeRow('displayLarge 56/700', context.typography.displayLarge,
-                'أ ب ت'),
-            _TypeRow('displaySmall 36/700', context.typography.displaySmall,
-                'الحروف'),
-            _TypeRow('headlineLarge 32/700', context.typography.headlineLarge,
-                'عنوان الشاشة'),
-            _TypeRow('headlineSmall 24/600', context.typography.headlineSmall,
-                'عنوان فرعي'),
-            _TypeRow('titleLarge 22/600', context.typography.titleLarge,
-                'عنوان بطاقة'),
-            _TypeRow('titleSmall 18/600', context.typography.titleSmall,
-                'عنوان صف'),
-            _TypeRow('bodyLarge 18/400', context.typography.bodyLarge,
-                'تعلّم الحروف مع القاعدة النورانية'),
-            _TypeRow('bodyMedium 16/400', context.typography.bodyMedium,
-                'نص أساسي للقراءة داخل التطبيق'),
-            _TypeRow('bodySmall 14/400', context.typography.bodySmall,
-                'نص ثانوي ومساعد'),
-            _TypeRow('labelMedium 14/600', context.typography.labelMedium,
-                'تسجيل الدخول'),
+            _TypeRow(
+              'displayLarge 56/700',
+              context.typography.displayLarge,
+              'أ ب ت',
+            ),
+            _TypeRow(
+              'displaySmall 36/700',
+              context.typography.displaySmall,
+              'الحروف',
+            ),
+            _TypeRow(
+              'headlineLarge 32/700',
+              context.typography.headlineLarge,
+              'عنوان الشاشة',
+            ),
+            _TypeRow(
+              'headlineSmall 24/600',
+              context.typography.headlineSmall,
+              'عنوان فرعي',
+            ),
+            _TypeRow(
+              'titleLarge 22/600',
+              context.typography.titleLarge,
+              'عنوان بطاقة',
+            ),
+            _TypeRow(
+              'titleSmall 18/600',
+              context.typography.titleSmall,
+              'عنوان صف',
+            ),
+            _TypeRow(
+              'bodyLarge 18/400',
+              context.typography.bodyLarge,
+              'تعلّم الحروف مع القاعدة النورانية',
+            ),
+            _TypeRow(
+              'bodyMedium 16/400',
+              context.typography.bodyMedium,
+              'نص أساسي للقراءة داخل التطبيق',
+            ),
+            _TypeRow(
+              'bodySmall 14/400',
+              context.typography.bodySmall,
+              'نص ثانوي ومساعد',
+            ),
+            _TypeRow(
+              'labelMedium 14/600',
+              context.typography.labelMedium,
+              'تسجيل الدخول',
+            ),
             _TypeRow('caption 12/400', context.typography.caption, 'حاشية'),
             _TypeRow('button 22/700', context.typography.button, 'هيّا نبدأ'),
           ],
@@ -121,8 +157,9 @@ class FoundationsSection extends StatelessWidget {
                     width: 56,
                     child: Text(
                       name,
-                      style: context.typography.caption
-                          .copyWith(color: c.textSecondary),
+                      style: context.typography.caption.copyWith(
+                        color: c.textSecondary,
+                      ),
                     ),
                   ),
                   Container(
@@ -136,8 +173,9 @@ class FoundationsSection extends StatelessWidget {
                   const SizedBox(width: AppSpacing.sm),
                   Text(
                     '${value.toStringAsFixed(0)}pt',
-                    style: context.typography.caption
-                        .copyWith(color: c.textDisabled),
+                    style: context.typography.caption.copyWith(
+                      color: c.textDisabled,
+                    ),
                   ),
                 ],
               ),
@@ -166,15 +204,15 @@ class FoundationsSection extends StatelessWidget {
                         height: AppSizing.avatarMedium,
                         decoration: BoxDecoration(
                           color: c.primaryContainer,
-                          borderRadius:
-                              BorderRadius.circular(value),
+                          borderRadius: BorderRadius.circular(value),
                         ),
                       ),
                       const SizedBox(height: AppSpacing.xs),
                       Text(
                         name,
-                        style: context.typography.caption
-                            .copyWith(color: c.textSecondary),
+                        style: context.typography.caption.copyWith(
+                          color: c.textSecondary,
+                        ),
                       ),
                     ],
                   ),
@@ -300,8 +338,9 @@ class _Swatches extends StatelessWidget {
             alignment: AlignmentDirectional.bottomStart,
             child: Text(
               swatch.name,
-              style: context.typography.labelSmall
-                  .copyWith(color: swatch.onColor),
+              style: context.typography.labelSmall.copyWith(
+                color: swatch.onColor,
+              ),
             ),
           ),
       ],
@@ -324,13 +363,11 @@ class _TypeRow extends StatelessWidget {
       children: <Widget>[
         Text(
           label,
-          style: context.typography.caption
-              .copyWith(color: context.colors.textDisabled),
+          style: context.typography.caption.copyWith(
+            color: context.colors.textDisabled,
+          ),
         ),
-        Text(
-          sample,
-          style: style.copyWith(color: context.colors.textPrimary),
-        ),
+        Text(sample, style: style.copyWith(color: context.colors.textPrimary)),
       ],
     );
   }
@@ -366,8 +403,9 @@ class _DepthChip extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           Text(
             label,
-            style: context.typography.caption
-                .copyWith(color: context.colors.textSecondary),
+            style: context.typography.caption.copyWith(
+              color: context.colors.textSecondary,
+            ),
           ),
         ],
       ),

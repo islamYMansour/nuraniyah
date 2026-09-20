@@ -52,8 +52,9 @@ class GalleryRow extends StatelessWidget {
       children: <Widget>[
         Text(
           label,
-          style: context.typography.labelSmall
-              .copyWith(color: context.colors.textSecondary),
+          style: context.typography.labelSmall.copyWith(
+            color: context.colors.textSecondary,
+          ),
         ),
         const SizedBox(height: AppSpacing.sm),
         Wrap(

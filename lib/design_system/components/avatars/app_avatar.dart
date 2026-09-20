@@ -61,18 +61,18 @@ class AppAvatar extends StatelessWidget {
   final String? semanticLabel;
 
   double get _diameter => switch (size) {
-        AppAvatarSize.small => AppSizing.avatarSmall,
-        AppAvatarSize.medium => AppSizing.avatarMedium,
-        AppAvatarSize.large => AppSizing.avatarLarge,
-        AppAvatarSize.medallion => AppSizing.medallion,
-      };
+    AppAvatarSize.small => AppSizing.avatarSmall,
+    AppAvatarSize.medium => AppSizing.avatarMedium,
+    AppAvatarSize.large => AppSizing.avatarLarge,
+    AppAvatarSize.medallion => AppSizing.medallion,
+  };
 
   TextStyle _initialsStyle(AppTypography typography) => switch (size) {
-        AppAvatarSize.small => typography.labelMedium,
-        AppAvatarSize.medium => typography.titleMedium,
-        AppAvatarSize.large => typography.headlineMedium,
-        AppAvatarSize.medallion => typography.displayMedium,
-      };
+    AppAvatarSize.small => typography.labelMedium,
+    AppAvatarSize.medium => typography.titleMedium,
+    AppAvatarSize.large => typography.headlineMedium,
+    AppAvatarSize.medallion => typography.displayMedium,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -80,8 +80,8 @@ class AppAvatar extends StatelessWidget {
     final Color background = backgroundColor ?? colors.accentSky;
     final Color foreground = foregroundColor ?? colors.onAccentSky;
 
-    final ImageProvider<Object>? image = imageProvider ??
-        (imageUrl != null ? NetworkImage(imageUrl!) : null);
+    final ImageProvider<Object>? image =
+        imageProvider ?? (imageUrl != null ? NetworkImage(imageUrl!) : null);
 
     Widget avatar = Container(
       width: _diameter,
@@ -108,16 +108,17 @@ class AppAvatar extends StatelessWidget {
       child: image != null
           ? null
           : (initials != null && initials!.isNotEmpty
-              ? Text(
-                  initials!,
-                  style: _initialsStyle(context.typography)
-                      .copyWith(color: foreground),
-                )
-              : Icon(
-                  AppIcons.user,
-                  size: _diameter * 0.5,
-                  color: foreground,
-                )),
+                ? Text(
+                    initials!,
+                    style: _initialsStyle(
+                      context.typography,
+                    ).copyWith(color: foreground),
+                  )
+                : Icon(
+                    AppIcons.user,
+                    size: _diameter * 0.5,
+                    color: foreground,
+                  )),
     );
 
     if (badge != null) {

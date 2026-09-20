@@ -61,18 +61,18 @@ class AppCard extends StatelessWidget {
     final AppColors colors = context.colors;
     final bool isInteractive = enabled && onTap != null;
 
-    final Color background = backgroundColor ??
-        (enabled ? colors.surface : colors.surfaceVariant);
+    final Color background =
+        backgroundColor ?? (enabled ? colors.surface : colors.surfaceVariant);
 
     final BoxBorder? border = switch (true) {
       _ when isSelected => Border.all(
-          color: colors.primary,
-          width: AppSizing.borderWidthThick,
-        ),
+        color: colors.primary,
+        width: AppSizing.borderWidthThick,
+      ),
       _ when variant == AppCardVariant.outlined => Border.all(
-          color: colors.border,
-          width: AppSizing.borderWidth,
-        ),
+        color: colors.border,
+        width: AppSizing.borderWidth,
+      ),
       _ => null,
     };
 

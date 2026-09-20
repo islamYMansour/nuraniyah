@@ -32,9 +32,7 @@ class _FeedbackSectionState extends State<FeedbackSection> {
               title: 'أحسنت!',
               message: 'أكملت الدرس بنجاح.',
             ),
-            const AppMessage.warning(
-              message: 'لم تتدرب منذ ثلاثة أيام.',
-            ),
+            const AppMessage.warning(message: 'لم تتدرب منذ ثلاثة أيام.'),
             AppMessage.error(
               title: 'تعذّر الحفظ',
               message: 'تحقق من اتصالك بالإنترنت.',
@@ -73,10 +71,8 @@ class _FeedbackSectionState extends State<FeedbackSection> {
                 AppButton.outlined(
                   label: 'تحذير',
                   size: AppButtonSize.small,
-                  onPressed: () => AppSnackbar.showWarning(
-                    context,
-                    message: 'انتبه للحركة',
-                  ),
+                  onPressed: () =>
+                      AppSnackbar.showWarning(context, message: 'انتبه للحركة'),
                 ),
                 AppButton.outlined(
                   label: 'خطأ',
@@ -156,8 +152,7 @@ class _FeedbackSectionState extends State<FeedbackSection> {
                             AppListItem(
                               title: 'المستوى $i',
                               showChevron: true,
-                              onTap: () =>
-                                  Navigator.of(sheetContext).pop(),
+                              onTap: () => Navigator.of(sheetContext).pop(),
                             ),
                         ],
                       ),

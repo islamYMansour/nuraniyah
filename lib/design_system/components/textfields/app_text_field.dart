@@ -66,9 +66,9 @@ class AppTextField extends StatefulWidget {
     this.textAlign = TextAlign.start,
     this.autofillHints,
   }) : assert(
-          controller == null || initialValue == null,
-          'Supply a controller or an initialValue, not both.',
-        );
+         controller == null || initialValue == null,
+         'Supply a controller or an initialValue, not both.',
+       );
 
   /// A numeric field: digits only, numeric keyboard.
   const AppTextField.number({
@@ -94,16 +94,16 @@ class AppTextField extends StatefulWidget {
     this.focusNode,
     this.variant = AppTextFieldVariant.filled,
     this.textAlign = TextAlign.start,
-  })  : obscureText = false,
-        keyboardType = TextInputType.number,
-        inputFormatters = const <TextInputFormatter>[],
-        maxLines = 1,
-        minLines = null,
-        autofillHints = null,
-        assert(
-          controller == null || initialValue == null,
-          'Supply a controller or an initialValue, not both.',
-        );
+  }) : obscureText = false,
+       keyboardType = TextInputType.number,
+       inputFormatters = const <TextInputFormatter>[],
+       maxLines = 1,
+       minLines = null,
+       autofillHints = null,
+       assert(
+         controller == null || initialValue == null,
+         'Supply a controller or an initialValue, not both.',
+       );
 
   /// A field that grows to several lines.
   const AppTextField.multiline({
@@ -126,19 +126,19 @@ class AppTextField extends StatefulWidget {
     this.textAlign = TextAlign.start,
     this.minLines = 3,
     this.maxLines = 6,
-  })  : leadingIcon = null,
-        trailingIcon = null,
-        onTrailingIconPressed = null,
-        trailingIconTooltip = null,
-        obscureText = false,
-        keyboardType = TextInputType.multiline,
-        textInputAction = TextInputAction.newline,
-        inputFormatters = null,
-        autofillHints = null,
-        assert(
-          controller == null || initialValue == null,
-          'Supply a controller or an initialValue, not both.',
-        );
+  }) : leadingIcon = null,
+       trailingIcon = null,
+       onTrailingIconPressed = null,
+       trailingIconTooltip = null,
+       obscureText = false,
+       keyboardType = TextInputType.multiline,
+       textInputAction = TextInputAction.newline,
+       inputFormatters = null,
+       autofillHints = null,
+       assert(
+         controller == null || initialValue == null,
+         'Supply a controller or an initialValue, not both.',
+       );
 
   final TextEditingController? controller;
   final String? initialValue;
@@ -206,7 +206,8 @@ class _AppTextFieldState extends State<AppTextField> {
       widget.controller ??
       (_ownedController ??= TextEditingController(text: widget.initialValue));
 
-  FocusNode get _focusNode => widget.focusNode ?? (_ownedFocusNode ??= FocusNode());
+  FocusNode get _focusNode =>
+      widget.focusNode ?? (_ownedFocusNode ??= FocusNode());
 
   @override
   void initState() {
@@ -249,8 +250,9 @@ class _AppTextFieldState extends State<AppTextField> {
       _ => colors.surfaceVariant,
     };
 
-    final Color contentColor =
-        isDisabled ? colors.textDisabled : colors.textPrimary;
+    final Color contentColor = isDisabled
+        ? colors.textDisabled
+        : colors.textPrimary;
 
     final Color iconColor = switch (true) {
       _ when isDisabled => colors.textDisabled,
@@ -335,8 +337,9 @@ class _AppTextFieldState extends State<AppTextField> {
                   style: typography.bodyMedium.copyWith(color: contentColor),
                   decoration: InputDecoration(
                     hintText: widget.hint,
-                    hintStyle: typography.bodyMedium
-                        .copyWith(color: colors.textDisabled),
+                    hintStyle: typography.bodyMedium.copyWith(
+                      color: colors.textDisabled,
+                    ),
                     // The container above draws the fill, border and focus
                     // ring; the raw field contributes padding only.
                     isDense: true,
@@ -356,9 +359,7 @@ class _AppTextFieldState extends State<AppTextField> {
               ),
               if (widget.trailingIcon != null)
                 Padding(
-                  padding: const EdgeInsetsDirectional.only(
-                    end: AppSpacing.sm,
-                  ),
+                  padding: const EdgeInsetsDirectional.only(end: AppSpacing.sm),
                   child: widget.onTrailingIconPressed == null
                       ? Padding(
                           padding: const EdgeInsets.all(AppSpacing.sm),
@@ -385,7 +386,8 @@ class _AppTextFieldState extends State<AppTextField> {
             ],
           ),
         ),
-        if (widget.errorText != null || widget.supportingText != null) ...<Widget>[
+        if (widget.errorText != null ||
+            widget.supportingText != null) ...<Widget>[
           const SizedBox(height: AppSpacing.sm),
           Text(
             widget.errorText ?? widget.supportingText!,

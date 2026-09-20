@@ -35,13 +35,17 @@ void main() {
     });
 
     test('body line height leaves room for harakat', () {
-      expect(AppTypography.standard.bodyMedium.height, greaterThanOrEqualTo(1.7));
+      expect(
+        AppTypography.standard.bodyMedium.height,
+        greaterThanOrEqualTo(1.7),
+      );
     });
   });
 
   group('gallery', () {
-    testWidgets('renders every component in both themes and directions',
-        (WidgetTester tester) async {
+    testWidgets('renders every component in both themes and directions', (
+      WidgetTester tester,
+    ) async {
       tester.view.physicalSize = const Size(1200, 2400);
       tester.view.devicePixelRatio = 1.0;
       addTearDown(tester.view.reset);
@@ -78,7 +82,9 @@ void main() {
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets('a primary button reports a press', (WidgetTester tester) async {
+    testWidgets('a primary button reports a press', (
+      WidgetTester tester,
+    ) async {
       int taps = 0;
       await tester.pumpWidget(
         MaterialApp(

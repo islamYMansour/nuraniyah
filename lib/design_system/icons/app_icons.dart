@@ -22,11 +22,11 @@ import 'package:flutter/material.dart';
 abstract final class AppIcons {
   /// Rebuilds an icon so [Icon] mirrors it under RTL.
   static IconData _mirrored(IconData icon) => IconData(
-        icon.codePoint,
-        fontFamily: icon.fontFamily,
-        fontPackage: icon.fontPackage,
-        matchTextDirection: true,
-      );
+    icon.codePoint,
+    fontFamily: icon.fontFamily,
+    fontPackage: icon.fontPackage,
+    matchTextDirection: true,
+  );
 
   // ── Navigation ────────────────────────────────────────────────
 

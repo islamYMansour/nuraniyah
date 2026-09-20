@@ -380,20 +380,32 @@ class AppTypography extends ThemeExtension<AppTypography> {
     if (other is! AppTypography) return this;
     return AppTypography(
       wordmark: TextStyle.lerp(wordmark, other.wordmark, t) ?? wordmark,
-      displayLarge: TextStyle.lerp(displayLarge, other.displayLarge, t) ?? displayLarge,
-      displayMedium: TextStyle.lerp(displayMedium, other.displayMedium, t) ?? displayMedium,
-      displaySmall: TextStyle.lerp(displaySmall, other.displaySmall, t) ?? displaySmall,
-      headlineLarge: TextStyle.lerp(headlineLarge, other.headlineLarge, t) ?? headlineLarge,
-      headlineMedium: TextStyle.lerp(headlineMedium, other.headlineMedium, t) ?? headlineMedium,
-      headlineSmall: TextStyle.lerp(headlineSmall, other.headlineSmall, t) ?? headlineSmall,
+      displayLarge:
+          TextStyle.lerp(displayLarge, other.displayLarge, t) ?? displayLarge,
+      displayMedium:
+          TextStyle.lerp(displayMedium, other.displayMedium, t) ??
+          displayMedium,
+      displaySmall:
+          TextStyle.lerp(displaySmall, other.displaySmall, t) ?? displaySmall,
+      headlineLarge:
+          TextStyle.lerp(headlineLarge, other.headlineLarge, t) ??
+          headlineLarge,
+      headlineMedium:
+          TextStyle.lerp(headlineMedium, other.headlineMedium, t) ??
+          headlineMedium,
+      headlineSmall:
+          TextStyle.lerp(headlineSmall, other.headlineSmall, t) ??
+          headlineSmall,
       titleLarge: TextStyle.lerp(titleLarge, other.titleLarge, t) ?? titleLarge,
-      titleMedium: TextStyle.lerp(titleMedium, other.titleMedium, t) ?? titleMedium,
+      titleMedium:
+          TextStyle.lerp(titleMedium, other.titleMedium, t) ?? titleMedium,
       titleSmall: TextStyle.lerp(titleSmall, other.titleSmall, t) ?? titleSmall,
       bodyLarge: TextStyle.lerp(bodyLarge, other.bodyLarge, t) ?? bodyLarge,
       bodyMedium: TextStyle.lerp(bodyMedium, other.bodyMedium, t) ?? bodyMedium,
       bodySmall: TextStyle.lerp(bodySmall, other.bodySmall, t) ?? bodySmall,
       labelLarge: TextStyle.lerp(labelLarge, other.labelLarge, t) ?? labelLarge,
-      labelMedium: TextStyle.lerp(labelMedium, other.labelMedium, t) ?? labelMedium,
+      labelMedium:
+          TextStyle.lerp(labelMedium, other.labelMedium, t) ?? labelMedium,
       labelSmall: TextStyle.lerp(labelSmall, other.labelSmall, t) ?? labelSmall,
       caption: TextStyle.lerp(caption, other.caption, t) ?? caption,
       button: TextStyle.lerp(button, other.button, t) ?? button,

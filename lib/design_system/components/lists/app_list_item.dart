@@ -55,8 +55,7 @@ class AppListItem extends StatelessWidget {
     final AppTypography typography = context.typography;
     final bool isInteractive = enabled && onTap != null;
 
-    final Color titleColor =
-        enabled ? colors.textPrimary : colors.textDisabled;
+    final Color titleColor = enabled ? colors.textPrimary : colors.textDisabled;
 
     final Widget content = Row(
       children: <Widget>[
@@ -77,8 +76,9 @@ class AppListItem extends StatelessWidget {
                 const SizedBox(height: AppSpacing.xxs),
                 Text(
                   subtitle!,
-                  style: typography.bodySmall
-                      .copyWith(color: colors.textSecondary),
+                  style: typography.bodySmall.copyWith(
+                    color: colors.textSecondary,
+                  ),
                 ),
               ],
             ],
@@ -99,7 +99,8 @@ class AppListItem extends StatelessWidget {
       ],
     );
 
-    final Color background = backgroundColor ??
+    final Color background =
+        backgroundColor ??
         (isSelected ? colors.primaryContainer : Colors.transparent);
 
     if (!isInteractive) {

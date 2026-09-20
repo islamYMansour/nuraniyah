@@ -67,34 +67,33 @@ class AppMessage extends StatelessWidget {
   final String dismissTooltip;
 
   (Color, Color, IconData) _style(AppColors colors) => switch (tone) {
-        AppMessageTone.success => (
-            colors.successContainer,
-            colors.onSuccessContainer,
-            AppIcons.success,
-          ),
-        AppMessageTone.warning => (
-            colors.warningContainer,
-            colors.onWarningContainer,
-            AppIcons.warning,
-          ),
-        AppMessageTone.error => (
-            colors.errorContainer,
-            colors.onErrorContainer,
-            AppIcons.error,
-          ),
-        AppMessageTone.info => (
-            colors.infoContainer,
-            colors.onInfoContainer,
-            AppIcons.info,
-          ),
-      };
+    AppMessageTone.success => (
+      colors.successContainer,
+      colors.onSuccessContainer,
+      AppIcons.success,
+    ),
+    AppMessageTone.warning => (
+      colors.warningContainer,
+      colors.onWarningContainer,
+      AppIcons.warning,
+    ),
+    AppMessageTone.error => (
+      colors.errorContainer,
+      colors.onErrorContainer,
+      AppIcons.error,
+    ),
+    AppMessageTone.info => (
+      colors.infoContainer,
+      colors.onInfoContainer,
+      AppIcons.info,
+    ),
+  };
 
   @override
   Widget build(BuildContext context) {
     final AppColors colors = context.colors;
     final AppTypography typography = context.typography;
-    final (Color background, Color foreground, IconData icon) =
-        _style(colors);
+    final (Color background, Color foreground, IconData icon) = _style(colors);
 
     return Container(
       padding: const EdgeInsets.all(AppSpacing.lg),

@@ -117,11 +117,7 @@ class _ControlsSectionState extends State<ControlsSection> {
                   onPressed: () {},
                 ),
                 const AppIconButton(icon: AppIcons.play, tooltip: 'Disabled'),
-                AppFab(
-                  icon: AppIcons.add,
-                  tooltip: 'Add',
-                  onPressed: () {},
-                ),
+                AppFab(icon: AppIcons.add, tooltip: 'Add', onPressed: () {}),
                 AppFab(
                   icon: AppIcons.add,
                   tooltip: 'Add lesson',
@@ -186,11 +182,7 @@ class _ControlsSectionState extends State<ControlsSection> {
               label: 'حالة غير محددة',
               onChanged: (bool? v) => setState(() => _tristate = v),
             ),
-            const AppCheckbox(
-              value: false,
-              onChanged: null,
-              label: 'معطل',
-            ),
+            const AppCheckbox(value: false, onChanged: null, label: 'معطل'),
             const AppCheckbox(
               value: false,
               onChanged: null,

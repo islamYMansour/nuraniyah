@@ -23,17 +23,17 @@ class AppTag extends StatelessWidget {
   final IconData? icon;
 
   (Color, Color) _colors(AppColors colors) => switch (tone) {
-        AppTagTone.neutral => (colors.surfaceVariant, colors.onSurfaceVariant),
-        AppTagTone.primary => (colors.primaryContainer, colors.onPrimaryContainer),
-        AppTagTone.secondary => (
-            colors.secondaryContainer,
-            colors.onSecondaryContainer
-          ),
-        AppTagTone.success => (colors.successContainer, colors.onSuccessContainer),
-        AppTagTone.warning => (colors.warningContainer, colors.onWarningContainer),
-        AppTagTone.error => (colors.errorContainer, colors.onErrorContainer),
-        AppTagTone.info => (colors.infoContainer, colors.onInfoContainer),
-      };
+    AppTagTone.neutral => (colors.surfaceVariant, colors.onSurfaceVariant),
+    AppTagTone.primary => (colors.primaryContainer, colors.onPrimaryContainer),
+    AppTagTone.secondary => (
+      colors.secondaryContainer,
+      colors.onSecondaryContainer,
+    ),
+    AppTagTone.success => (colors.successContainer, colors.onSuccessContainer),
+    AppTagTone.warning => (colors.warningContainer, colors.onWarningContainer),
+    AppTagTone.error => (colors.errorContainer, colors.onErrorContainer),
+    AppTagTone.info => (colors.infoContainer, colors.onInfoContainer),
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +44,7 @@ class AppTag extends StatelessWidget {
         horizontal: AppSpacing.md,
         vertical: AppSpacing.xs,
       ),
-      decoration: BoxDecoration(
-        color: background,
-        borderRadius: AppRadii.chip,
-      ),
+      decoration: BoxDecoration(color: background, borderRadius: AppRadii.chip),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[

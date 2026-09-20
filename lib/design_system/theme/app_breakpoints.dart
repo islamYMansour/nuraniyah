@@ -23,11 +23,11 @@ enum AppBreakpoint {
 
   /// The class for a given window width.
   static AppBreakpoint fromWidth(double width) => switch (width) {
-        < 600 => AppBreakpoint.compact,
-        < 840 => AppBreakpoint.medium,
-        < 1200 => AppBreakpoint.expanded,
-        _ => AppBreakpoint.large,
-      };
+    < 600 => AppBreakpoint.compact,
+    < 840 => AppBreakpoint.medium,
+    < 1200 => AppBreakpoint.expanded,
+    _ => AppBreakpoint.large,
+  };
 
   /// The class for the nearest window.
   static AppBreakpoint of(BuildContext context) =>
@@ -53,27 +53,27 @@ enum AppBreakpoint {
   /// adaptation happens in [screenPadding], [contentMaxWidth] and the column
   /// count.
   double get typeScale => switch (this) {
-        AppBreakpoint.compact => 1.0,
-        AppBreakpoint.medium => 1.05,
-        AppBreakpoint.expanded => 1.1,
-        AppBreakpoint.large => 1.1,
-      };
+    AppBreakpoint.compact => 1.0,
+    AppBreakpoint.medium => 1.05,
+    AppBreakpoint.expanded => 1.1,
+    AppBreakpoint.large => 1.1,
+  };
 
   /// Left/right gutter of a screen at this class.
   double get screenPadding => switch (this) {
-        AppBreakpoint.compact => 24,
-        AppBreakpoint.medium => 32,
-        AppBreakpoint.expanded => 48,
-        AppBreakpoint.large => 64,
-      };
+    AppBreakpoint.compact => 24,
+    AppBreakpoint.medium => 32,
+    AppBreakpoint.expanded => 48,
+    AppBreakpoint.large => 64,
+  };
 
   /// Space between two major blocks of a screen at this class.
   double get sectionGap => switch (this) {
-        AppBreakpoint.compact => 32,
-        AppBreakpoint.medium => 40,
-        AppBreakpoint.expanded => 48,
-        AppBreakpoint.large => 48,
-      };
+    AppBreakpoint.compact => 32,
+    AppBreakpoint.medium => 40,
+    AppBreakpoint.expanded => 48,
+    AppBreakpoint.large => 48,
+  };
 
   /// How wide a column of running text or a form may get before it stops
   /// growing.
@@ -81,28 +81,28 @@ enum AppBreakpoint {
   /// Line length is the whole point: a paragraph of Arabic stretched across a
   /// 1366pt window is unreadable no matter how good the type is.
   double get contentMaxWidth => switch (this) {
-        AppBreakpoint.compact => double.infinity,
-        AppBreakpoint.medium => 640,
-        AppBreakpoint.expanded => 720,
-        AppBreakpoint.large => 760,
-      };
+    AppBreakpoint.compact => double.infinity,
+    AppBreakpoint.medium => 640,
+    AppBreakpoint.expanded => 720,
+    AppBreakpoint.large => 760,
+  };
 
   /// How wide mixed content — cards, media, a dashboard — may get.
   double get wideContentMaxWidth => switch (this) {
-        AppBreakpoint.compact => double.infinity,
-        AppBreakpoint.medium => 840,
-        AppBreakpoint.expanded => 1080,
-        AppBreakpoint.large => 1280,
-      };
+    AppBreakpoint.compact => double.infinity,
+    AppBreakpoint.medium => 840,
+    AppBreakpoint.expanded => 1080,
+    AppBreakpoint.large => 1280,
+  };
 
   /// A sensible default column count for a grid of equally weighted tiles —
   /// letter cards, lesson tiles.
   int get gridColumns => switch (this) {
-        AppBreakpoint.compact => 2,
-        AppBreakpoint.medium => 3,
-        AppBreakpoint.expanded => 4,
-        AppBreakpoint.large => 5,
-      };
+    AppBreakpoint.compact => 2,
+    AppBreakpoint.medium => 3,
+    AppBreakpoint.expanded => 4,
+    AppBreakpoint.large => 5,
+  };
 }
 
 /// Picks a value per window size class.

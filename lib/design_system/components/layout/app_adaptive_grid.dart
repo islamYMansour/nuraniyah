@@ -54,8 +54,8 @@ class AppAdaptiveGrid extends StatelessWidget {
         if (columns != null) {
           columnCount = columns!;
         } else if (minTileWidth != null && available.isFinite) {
-          columnCount =
-              ((available + spacing) / (minTileWidth! + spacing)).floor();
+          columnCount = ((available + spacing) / (minTileWidth! + spacing))
+              .floor();
         } else {
           columnCount = fromBreakpoint;
         }

@@ -35,8 +35,9 @@ class AppTooltip extends StatelessWidget {
         color: colors.surfaceInverse,
         borderRadius: AppRadii.input,
       ),
-      textStyle: context.typography.caption
-          .copyWith(color: colors.onSurfaceInverse),
+      textStyle: context.typography.caption.copyWith(
+        color: colors.onSurfaceInverse,
+      ),
       child: child,
     );
   }

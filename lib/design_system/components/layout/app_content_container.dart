@@ -68,7 +68,8 @@ class AppContentContainer extends StatelessWidget {
       child: ConstrainedBox(
         constraints: BoxConstraints(maxWidth: maxWidth),
         child: Padding(
-          padding: padding ??
+          padding:
+              padding ??
               EdgeInsets.symmetric(horizontal: breakpoint.screenPadding),
           child: child,
         ),

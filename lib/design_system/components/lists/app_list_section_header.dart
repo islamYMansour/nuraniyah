@@ -41,8 +41,9 @@ class AppListSectionHeader extends StatelessWidget {
           Expanded(
             child: Text(
               count == null ? title : '$title ($count)',
-              style: typography.labelMedium
-                  .copyWith(color: colors.textSecondary),
+              style: typography.labelMedium.copyWith(
+                color: colors.textSecondary,
+              ),
             ),
           ),
           ?action,

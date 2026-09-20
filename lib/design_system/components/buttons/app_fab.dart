@@ -40,13 +40,14 @@ class AppFab extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppColors colors = context.colors;
     final bool isExtended = label != null;
-    final Color foreground =
-        _isInteractive ? colors.onPrimary : colors.onDisabled;
+    final Color foreground = _isInteractive
+        ? colors.onPrimary
+        : colors.onDisabled;
 
     return Tooltip
-        // An extended FAB already shows its name, so only the icon-only form
-        // needs the tooltip surfaced visually.
-        (
+    // An extended FAB already shows its name, so only the icon-only form
+    // needs the tooltip surfaced visually.
+    (
       message: isExtended ? '' : tooltip,
       child: AppPressable(
         onPressed: _isInteractive ? onPressed : null,
@@ -69,8 +70,9 @@ class AppFab extends StatelessWidget {
                   const SizedBox(width: AppSpacing.inlineGap),
                   Text(
                     label!,
-                    style: context.typography.labelLarge
-                        .copyWith(color: foreground),
+                    style: context.typography.labelLarge.copyWith(
+                      color: foreground,
+                    ),
                   ),
                 ],
               ],

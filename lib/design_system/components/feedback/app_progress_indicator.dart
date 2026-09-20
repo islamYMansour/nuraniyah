@@ -98,8 +98,9 @@ class AppLoadingState extends StatelessWidget {
             Text(
               message!,
               textAlign: TextAlign.center,
-              style: context.typography.bodySmall
-                  .copyWith(color: context.colors.textSecondary),
+              style: context.typography.bodySmall.copyWith(
+                color: context.colors.textSecondary,
+              ),
             ),
           ],
         ],

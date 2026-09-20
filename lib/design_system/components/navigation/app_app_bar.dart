@@ -25,9 +25,9 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.backgroundColor,
     this.bottom,
   }) : assert(
-          title == null || titleWidget == null,
-          'Supply a title or a titleWidget, not both.',
-        );
+         title == null || titleWidget == null,
+         'Supply a title or a titleWidget, not both.',
+       );
 
   /// Plain-text title, styled from the tokens.
   final String? title;
@@ -57,9 +57,8 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   final PreferredSizeWidget? bottom;
 
   @override
-  Size get preferredSize => Size.fromHeight(
-        kToolbarHeight + (bottom?.preferredSize.height ?? 0),
-      );
+  Size get preferredSize =>
+      Size.fromHeight(kToolbarHeight + (bottom?.preferredSize.height ?? 0));
 
   @override
   Widget build(BuildContext context) {
@@ -87,13 +86,15 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
         leading: showBackButton
             ? AppBackButton(onPressed: onBackPressed)
             : leading,
-        title: titleWidget ??
+        title:
+            titleWidget ??
             (title == null
                 ? null
                 : Text(
                     title!,
-                    style: context.typography.titleLarge
-                        .copyWith(color: colors.textPrimary),
+                    style: context.typography.titleLarge.copyWith(
+                      color: colors.textPrimary,
+                    ),
                   )),
         actions: <Widget>[
           ...actions,

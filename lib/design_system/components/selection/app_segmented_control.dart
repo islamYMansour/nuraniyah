@@ -5,11 +5,7 @@ import '../../theme/theme.dart';
 /// One segment of an [AppSegmentedControl].
 @immutable
 class AppSegment<T> {
-  const AppSegment({
-    required this.value,
-    required this.label,
-    this.icon,
-  });
+  const AppSegment({required this.value, required this.label, this.icon});
 
   final T value;
   final String label;
@@ -31,7 +27,10 @@ class AppSegmentedControl<T> extends StatelessWidget {
     required this.segments,
     required this.onChanged,
     this.enabled = true,
-  }) : assert(segments.length > 1, 'A segmented control needs two or more segments.');
+  }) : assert(
+         segments.length > 1,
+         'A segmented control needs two or more segments.',
+       );
 
   final T value;
   final List<AppSegment<T>> segments;
@@ -121,7 +120,11 @@ class _Segment<T> extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               if (segment.icon != null) ...<Widget>[
-                Icon(segment.icon, size: AppSizing.iconSmall, color: foreground),
+                Icon(
+                  segment.icon,
+                  size: AppSizing.iconSmall,
+                  color: foreground,
+                ),
                 const SizedBox(width: AppSpacing.sm),
               ],
               Flexible(

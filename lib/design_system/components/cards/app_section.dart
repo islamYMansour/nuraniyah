@@ -60,15 +60,17 @@ class AppSection extends StatelessWidget {
                       if (title != null)
                         Text(
                           title!,
-                          style: typography.titleLarge
-                              .copyWith(color: colors.textPrimary),
+                          style: typography.titleLarge.copyWith(
+                            color: colors.textPrimary,
+                          ),
                         ),
                       if (description != null) ...<Widget>[
                         const SizedBox(height: AppSpacing.xs),
                         Text(
                           description!,
-                          style: typography.bodySmall
-                              .copyWith(color: colors.textSecondary),
+                          style: typography.bodySmall.copyWith(
+                            color: colors.textSecondary,
+                          ),
                         ),
                       ],
                     ],

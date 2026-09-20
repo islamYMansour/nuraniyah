@@ -26,19 +26,29 @@ abstract final class AppRadii {
   static const BorderRadius none = BorderRadius.zero;
 
   /// Chips, badges, small tags.
-  static const BorderRadius chip = BorderRadius.all(Radius.circular(AppRadius.pill));
+  static const BorderRadius chip = BorderRadius.all(
+    Radius.circular(AppRadius.pill),
+  );
 
   /// Buttons — a stadium, as in the design.
-  static const BorderRadius button = BorderRadius.all(Radius.circular(AppRadius.pill));
+  static const BorderRadius button = BorderRadius.all(
+    Radius.circular(AppRadius.pill),
+  );
 
   /// Text fields and selects.
-  static const BorderRadius input = BorderRadius.all(Radius.circular(AppRadius.md));
+  static const BorderRadius input = BorderRadius.all(
+    Radius.circular(AppRadius.md),
+  );
 
   /// Cards, tiles, lesson entries.
-  static const BorderRadius card = BorderRadius.all(Radius.circular(AppRadius.xl));
+  static const BorderRadius card = BorderRadius.all(
+    Radius.circular(AppRadius.xl),
+  );
 
   /// Dialogs and alerts.
-  static const BorderRadius dialog = BorderRadius.all(Radius.circular(AppRadius.xxl));
+  static const BorderRadius dialog = BorderRadius.all(
+    Radius.circular(AppRadius.xxl),
+  );
 
   /// Bottom sheets — rounded at the top only.
   static const BorderRadius sheet = BorderRadius.vertical(
@@ -46,10 +56,14 @@ abstract final class AppRadii {
   );
 
   /// Images and illustration plates.
-  static const BorderRadius image = BorderRadius.all(Radius.circular(AppRadius.lg));
+  static const BorderRadius image = BorderRadius.all(
+    Radius.circular(AppRadius.lg),
+  );
 
   /// Progress bars and thin indicators.
-  static const BorderRadius indicator = BorderRadius.all(Radius.circular(AppRadius.pill));
+  static const BorderRadius indicator = BorderRadius.all(
+    Radius.circular(AppRadius.pill),
+  );
 }
 
 /// The same radii as [ShapeBorder]s, for the Material component themes that
@@ -58,12 +72,16 @@ abstract final class AppShapes {
   static const StadiumBorder button = StadiumBorder();
   static const StadiumBorder chip = StadiumBorder();
 
-  static const RoundedRectangleBorder input =
-      RoundedRectangleBorder(borderRadius: AppRadii.input);
-  static const RoundedRectangleBorder card =
-      RoundedRectangleBorder(borderRadius: AppRadii.card);
-  static const RoundedRectangleBorder dialog =
-      RoundedRectangleBorder(borderRadius: AppRadii.dialog);
-  static const RoundedRectangleBorder sheet =
-      RoundedRectangleBorder(borderRadius: AppRadii.sheet);
+  static const RoundedRectangleBorder input = RoundedRectangleBorder(
+    borderRadius: AppRadii.input,
+  );
+  static const RoundedRectangleBorder card = RoundedRectangleBorder(
+    borderRadius: AppRadii.card,
+  );
+  static const RoundedRectangleBorder dialog = RoundedRectangleBorder(
+    borderRadius: AppRadii.dialog,
+  );
+  static const RoundedRectangleBorder sheet = RoundedRectangleBorder(
+    borderRadius: AppRadii.sheet,
+  );
 }

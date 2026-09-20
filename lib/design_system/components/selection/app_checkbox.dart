@@ -43,8 +43,9 @@ class AppCheckbox extends StatelessWidget {
     final AppColors colors = context.colors;
     final AppTypography typography = context.typography;
 
-    final Color labelColor =
-        _isInteractive ? colors.textPrimary : colors.textDisabled;
+    final Color labelColor = _isInteractive
+        ? colors.textPrimary
+        : colors.textDisabled;
 
     final Widget box = Checkbox(
       value: value,
@@ -80,7 +81,9 @@ class AppCheckbox extends StatelessWidget {
       enabled: _isInteractive,
       child: InkWell(
         onTap: _isInteractive
-            ? () => onChanged!(isTristate && value == false ? null : !(value ?? false))
+            ? () => onChanged!(
+                isTristate && value == false ? null : !(value ?? false),
+              )
             : null,
         borderRadius: AppRadii.input,
         child: Padding(
@@ -101,7 +104,9 @@ class AppCheckbox extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         label!,
-                        style: typography.bodyMedium.copyWith(color: labelColor),
+                        style: typography.bodyMedium.copyWith(
+                          color: labelColor,
+                        ),
                       ),
                       if (supportingText != null) ...<Widget>[
                         const SizedBox(height: AppSpacing.xxs),

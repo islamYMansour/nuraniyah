@@ -80,10 +80,10 @@ class _AppPasswordFieldState extends State<AppPasswordField> {
       ],
       leadingIcon: AppIcons.locked,
       trailingIcon: _isObscured ? AppIcons.visible : AppIcons.hidden,
-      trailingIconTooltip:
-          _isObscured ? widget.showTooltip : widget.hideTooltip,
-      onTrailingIconPressed: () =>
-          setState(() => _isObscured = !_isObscured),
+      trailingIconTooltip: _isObscured
+          ? widget.showTooltip
+          : widget.hideTooltip,
+      onTrailingIconPressed: () => setState(() => _isObscured = !_isObscured),
     );
   }
 }

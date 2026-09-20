@@ -55,10 +55,7 @@ class _SurfacesSectionState extends State<SurfacesSection> {
             AppCard(
               isSelected: true,
               onTap: () {},
-              child: Text(
-                'selected',
-                style: context.typography.bodyMedium,
-              ),
+              child: Text('selected', style: context.typography.bodyMedium),
             ),
           ],
         ),
@@ -73,8 +70,9 @@ class _SurfacesSectionState extends State<SurfacesSection> {
                   color: c.accentSky,
                   child: Text(
                     'accentSky',
-                    style: context.typography.labelMedium
-                        .copyWith(color: c.onAccentSky),
+                    style: context.typography.labelMedium.copyWith(
+                      color: c.onAccentSky,
+                    ),
                   ),
                 ),
                 AppSurface.circle(
@@ -82,8 +80,9 @@ class _SurfacesSectionState extends State<SurfacesSection> {
                   color: c.accentSun,
                   child: Text(
                     'أ',
-                    style: context.typography.headlineMedium
-                        .copyWith(color: c.onAccentSun),
+                    style: context.typography.headlineMedium.copyWith(
+                      color: c.onAccentSun,
+                    ),
                   ),
                 ),
               ],
@@ -128,8 +127,9 @@ class _SurfacesSectionState extends State<SurfacesSection> {
               children: <Widget>[
                 Text(
                   'طريقة لتعليم القراءة الصحيحة للحروف العربية والقرآن الكريم.',
-                  style: context.typography.bodySmall
-                      .copyWith(color: c.textSecondary),
+                  style: context.typography.bodySmall.copyWith(
+                    color: c.textSecondary,
+                  ),
                 ),
               ],
             ),

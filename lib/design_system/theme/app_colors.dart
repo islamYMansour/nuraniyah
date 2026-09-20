@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 /// happens here and nowhere else. The full ramp is documented in
 /// `lib/design_system/README.md`.
 abstract final class _Palette {
-
   // Teal — the primary brand ramp. `teal500` is the onboarding CTA fill,
   // `teal700` is the solid drop shadow beneath it.
   static const teal900 = Color(0xFF14544F);
@@ -619,57 +618,97 @@ class AppColors extends ThemeExtension<AppColors> {
     return AppColors(
       primary: Color.lerp(primary, other.primary, t) ?? primary,
       onPrimary: Color.lerp(onPrimary, other.onPrimary, t) ?? onPrimary,
-      primaryPressed: Color.lerp(primaryPressed, other.primaryPressed, t) ?? primaryPressed,
-      primaryStrong: Color.lerp(primaryStrong, other.primaryStrong, t) ?? primaryStrong,
-      primaryContainer: Color.lerp(primaryContainer, other.primaryContainer, t) ?? primaryContainer,
-      onPrimaryContainer: Color.lerp(onPrimaryContainer, other.onPrimaryContainer, t) ?? onPrimaryContainer,
+      primaryPressed:
+          Color.lerp(primaryPressed, other.primaryPressed, t) ?? primaryPressed,
+      primaryStrong:
+          Color.lerp(primaryStrong, other.primaryStrong, t) ?? primaryStrong,
+      primaryContainer:
+          Color.lerp(primaryContainer, other.primaryContainer, t) ??
+          primaryContainer,
+      onPrimaryContainer:
+          Color.lerp(onPrimaryContainer, other.onPrimaryContainer, t) ??
+          onPrimaryContainer,
       secondary: Color.lerp(secondary, other.secondary, t) ?? secondary,
       onSecondary: Color.lerp(onSecondary, other.onSecondary, t) ?? onSecondary,
-      secondaryPressed: Color.lerp(secondaryPressed, other.secondaryPressed, t) ?? secondaryPressed,
-      secondaryContainer: Color.lerp(secondaryContainer, other.secondaryContainer, t) ?? secondaryContainer,
-      onSecondaryContainer: Color.lerp(onSecondaryContainer, other.onSecondaryContainer, t) ?? onSecondaryContainer,
+      secondaryPressed:
+          Color.lerp(secondaryPressed, other.secondaryPressed, t) ??
+          secondaryPressed,
+      secondaryContainer:
+          Color.lerp(secondaryContainer, other.secondaryContainer, t) ??
+          secondaryContainer,
+      onSecondaryContainer:
+          Color.lerp(onSecondaryContainer, other.onSecondaryContainer, t) ??
+          onSecondaryContainer,
       background: Color.lerp(background, other.background, t) ?? background,
-      onBackground: Color.lerp(onBackground, other.onBackground, t) ?? onBackground,
+      onBackground:
+          Color.lerp(onBackground, other.onBackground, t) ?? onBackground,
       surface: Color.lerp(surface, other.surface, t) ?? surface,
       onSurface: Color.lerp(onSurface, other.onSurface, t) ?? onSurface,
-      surfaceVariant: Color.lerp(surfaceVariant, other.surfaceVariant, t) ?? surfaceVariant,
-      onSurfaceVariant: Color.lerp(onSurfaceVariant, other.onSurfaceVariant, t) ?? onSurfaceVariant,
-      surfaceInverse: Color.lerp(surfaceInverse, other.surfaceInverse, t) ?? surfaceInverse,
-      onSurfaceInverse: Color.lerp(onSurfaceInverse, other.onSurfaceInverse, t) ?? onSurfaceInverse,
+      surfaceVariant:
+          Color.lerp(surfaceVariant, other.surfaceVariant, t) ?? surfaceVariant,
+      onSurfaceVariant:
+          Color.lerp(onSurfaceVariant, other.onSurfaceVariant, t) ??
+          onSurfaceVariant,
+      surfaceInverse:
+          Color.lerp(surfaceInverse, other.surfaceInverse, t) ?? surfaceInverse,
+      onSurfaceInverse:
+          Color.lerp(onSurfaceInverse, other.onSurfaceInverse, t) ??
+          onSurfaceInverse,
       textPrimary: Color.lerp(textPrimary, other.textPrimary, t) ?? textPrimary,
-      textSecondary: Color.lerp(textSecondary, other.textSecondary, t) ?? textSecondary,
-      textDisabled: Color.lerp(textDisabled, other.textDisabled, t) ?? textDisabled,
+      textSecondary:
+          Color.lerp(textSecondary, other.textSecondary, t) ?? textSecondary,
+      textDisabled:
+          Color.lerp(textDisabled, other.textDisabled, t) ?? textDisabled,
       textLink: Color.lerp(textLink, other.textLink, t) ?? textLink,
       textInverse: Color.lerp(textInverse, other.textInverse, t) ?? textInverse,
       border: Color.lerp(border, other.border, t) ?? border,
-      borderStrong: Color.lerp(borderStrong, other.borderStrong, t) ?? borderStrong,
+      borderStrong:
+          Color.lerp(borderStrong, other.borderStrong, t) ?? borderStrong,
       borderFocus: Color.lerp(borderFocus, other.borderFocus, t) ?? borderFocus,
       divider: Color.lerp(divider, other.divider, t) ?? divider,
       success: Color.lerp(success, other.success, t) ?? success,
       onSuccess: Color.lerp(onSuccess, other.onSuccess, t) ?? onSuccess,
-      successContainer: Color.lerp(successContainer, other.successContainer, t) ?? successContainer,
-      onSuccessContainer: Color.lerp(onSuccessContainer, other.onSuccessContainer, t) ?? onSuccessContainer,
+      successContainer:
+          Color.lerp(successContainer, other.successContainer, t) ??
+          successContainer,
+      onSuccessContainer:
+          Color.lerp(onSuccessContainer, other.onSuccessContainer, t) ??
+          onSuccessContainer,
       error: Color.lerp(error, other.error, t) ?? error,
       onError: Color.lerp(onError, other.onError, t) ?? onError,
-      errorContainer: Color.lerp(errorContainer, other.errorContainer, t) ?? errorContainer,
-      onErrorContainer: Color.lerp(onErrorContainer, other.onErrorContainer, t) ?? onErrorContainer,
+      errorContainer:
+          Color.lerp(errorContainer, other.errorContainer, t) ?? errorContainer,
+      onErrorContainer:
+          Color.lerp(onErrorContainer, other.onErrorContainer, t) ??
+          onErrorContainer,
       warning: Color.lerp(warning, other.warning, t) ?? warning,
       onWarning: Color.lerp(onWarning, other.onWarning, t) ?? onWarning,
-      warningContainer: Color.lerp(warningContainer, other.warningContainer, t) ?? warningContainer,
-      onWarningContainer: Color.lerp(onWarningContainer, other.onWarningContainer, t) ?? onWarningContainer,
+      warningContainer:
+          Color.lerp(warningContainer, other.warningContainer, t) ??
+          warningContainer,
+      onWarningContainer:
+          Color.lerp(onWarningContainer, other.onWarningContainer, t) ??
+          onWarningContainer,
       info: Color.lerp(info, other.info, t) ?? info,
       onInfo: Color.lerp(onInfo, other.onInfo, t) ?? onInfo,
-      infoContainer: Color.lerp(infoContainer, other.infoContainer, t) ?? infoContainer,
-      onInfoContainer: Color.lerp(onInfoContainer, other.onInfoContainer, t) ?? onInfoContainer,
+      infoContainer:
+          Color.lerp(infoContainer, other.infoContainer, t) ?? infoContainer,
+      onInfoContainer:
+          Color.lerp(onInfoContainer, other.onInfoContainer, t) ??
+          onInfoContainer,
       accentSky: Color.lerp(accentSky, other.accentSky, t) ?? accentSky,
       onAccentSky: Color.lerp(onAccentSky, other.onAccentSky, t) ?? onAccentSky,
       accentSun: Color.lerp(accentSun, other.accentSun, t) ?? accentSun,
       onAccentSun: Color.lerp(onAccentSun, other.onAccentSun, t) ?? onAccentSun,
       accentCoral: Color.lerp(accentCoral, other.accentCoral, t) ?? accentCoral,
-      onAccentCoral: Color.lerp(onAccentCoral, other.onAccentCoral, t) ?? onAccentCoral,
+      onAccentCoral:
+          Color.lerp(onAccentCoral, other.onAccentCoral, t) ?? onAccentCoral,
       shadow: Color.lerp(shadow, other.shadow, t) ?? shadow,
-      primaryShadow: Color.lerp(primaryShadow, other.primaryShadow, t) ?? primaryShadow,
-      secondaryShadow: Color.lerp(secondaryShadow, other.secondaryShadow, t) ?? secondaryShadow,
+      primaryShadow:
+          Color.lerp(primaryShadow, other.primaryShadow, t) ?? primaryShadow,
+      secondaryShadow:
+          Color.lerp(secondaryShadow, other.secondaryShadow, t) ??
+          secondaryShadow,
       scrim: Color.lerp(scrim, other.scrim, t) ?? scrim,
       disabled: Color.lerp(disabled, other.disabled, t) ?? disabled,
       onDisabled: Color.lerp(onDisabled, other.onDisabled, t) ?? onDisabled,

@@ -66,7 +66,7 @@ extension AppThemeContext on BuildContext {
   /// fills a screen — it is the difference between a layout that merely fits
   /// on a tablet and one that belongs there.
   EdgeInsets get screenInsets => EdgeInsets.symmetric(
-        horizontal: screenPadding,
-        vertical: AppSpacing.screenVertical,
-      );
+    horizontal: screenPadding,
+    vertical: AppSpacing.screenVertical,
+  );
 }

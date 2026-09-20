@@ -71,13 +71,15 @@ class AppIconButton extends StatelessWidget {
 
     if (!_isInteractive) {
       foreground = colors.textDisabled;
-      background =
-          variant == AppIconButtonVariant.plain ? null : colors.disabled;
+      background = variant == AppIconButtonVariant.plain
+          ? null
+          : colors.disabled;
       slab = null;
     } else {
       switch (variant) {
         case AppIconButtonVariant.plain:
-          foreground = color ??
+          foreground =
+              color ??
               (isSelected ? colors.primaryStrong : colors.textSecondary);
           background = isSelected ? colors.primaryContainer : null;
           slab = null;

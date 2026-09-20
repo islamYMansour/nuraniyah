@@ -21,14 +21,14 @@ class AppSkeleton extends StatefulWidget {
 
   /// A single line of placeholder text.
   const AppSkeleton.text({super.key, this.width})
-      : height = AppSpacing.lg,
-        borderRadius = AppRadii.indicator;
+    : height = AppSpacing.lg,
+      borderRadius = AppRadii.indicator;
 
   /// A circular placeholder, for an avatar.
   const AppSkeleton.circle({super.key, required double size})
-      : width = size,
-        height = size,
-        borderRadius = AppRadii.chip;
+    : width = size,
+      height = size,
+      borderRadius = AppRadii.chip;
 
   final double? width;
   final double height;
@@ -62,10 +62,7 @@ class _AppSkeletonState extends State<AppSkeleton>
     final AppColors colors = context.colors;
     final bool reduceMotion = MediaQuery.disableAnimationsOf(context);
 
-    final Widget block = SizedBox(
-      width: widget.width,
-      height: widget.height,
-    );
+    final Widget block = SizedBox(width: widget.width, height: widget.height);
 
     if (reduceMotion) {
       return DecoratedBox(

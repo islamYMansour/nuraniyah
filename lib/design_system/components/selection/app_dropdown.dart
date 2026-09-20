@@ -65,8 +65,9 @@ class AppDropdown<T> extends StatelessWidget {
     final AppTypography typography = context.typography;
     final bool hasError = errorText != null;
 
-    final Color contentColor =
-        _isInteractive ? colors.textPrimary : colors.textDisabled;
+    final Color contentColor = _isInteractive
+        ? colors.textPrimary
+        : colors.textDisabled;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +87,9 @@ class AppDropdown<T> extends StatelessWidget {
                   : null,
             ),
             style: typography.labelLarge.copyWith(
-              color: _isInteractive ? colors.textSecondary : colors.textDisabled,
+              color: _isInteractive
+                  ? colors.textSecondary
+                  : colors.textDisabled,
             ),
           ),
           const SizedBox(height: AppSpacing.sm),
@@ -141,8 +144,9 @@ class AppDropdown<T> extends StatelessWidget {
                         ? null
                         : Text(
                             hint!,
-                            style: typography.bodyMedium
-                                .copyWith(color: colors.textDisabled),
+                            style: typography.bodyMedium.copyWith(
+                              color: colors.textDisabled,
+                            ),
                           ),
                     items: <DropdownMenuItem<T>>[
                       for (final AppDropdownItem<T> item in items)

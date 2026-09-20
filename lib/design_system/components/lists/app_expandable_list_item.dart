@@ -66,8 +66,9 @@ class _AppExpandableListItemState extends State<AppExpandableListItem> {
   Widget build(BuildContext context) {
     final AppColors colors = context.colors;
     final AppTypography typography = context.typography;
-    final Color titleColor =
-        widget.enabled ? colors.textPrimary : colors.textDisabled;
+    final Color titleColor = widget.enabled
+        ? colors.textPrimary
+        : colors.textDisabled;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -98,15 +99,17 @@ class _AppExpandableListItemState extends State<AppExpandableListItem> {
                       children: <Widget>[
                         Text(
                           widget.title,
-                          style: typography.titleSmall
-                              .copyWith(color: titleColor),
+                          style: typography.titleSmall.copyWith(
+                            color: titleColor,
+                          ),
                         ),
                         if (widget.subtitle != null) ...<Widget>[
                           const SizedBox(height: AppSpacing.xxs),
                           Text(
                             widget.subtitle!,
-                            style: typography.bodySmall
-                                .copyWith(color: colors.textSecondary),
+                            style: typography.bodySmall.copyWith(
+                              color: colors.textSecondary,
+                            ),
                           ),
                         ],
                       ],

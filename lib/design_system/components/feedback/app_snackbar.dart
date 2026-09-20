@@ -30,18 +30,17 @@ abstract final class AppSnackbar {
     final AppTypography typography = context.typography;
     final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
 
-    final (Color background, Color foreground, IconData? icon) =
-        switch (tone) {
+    final (Color background, Color foreground, IconData? icon) = switch (tone) {
       AppMessageTone.success => (
-          colors.success,
-          colors.onSuccess,
-          AppIcons.success,
-        ),
+        colors.success,
+        colors.onSuccess,
+        AppIcons.success,
+      ),
       AppMessageTone.warning => (
-          colors.warning,
-          colors.onWarning,
-          AppIcons.warning,
-        ),
+        colors.warning,
+        colors.onWarning,
+        AppIcons.warning,
+      ),
       AppMessageTone.error => (colors.error, colors.onError, AppIcons.error),
       AppMessageTone.info => (colors.info, colors.onInfo, AppIcons.info),
       null => (colors.surfaceInverse, colors.onSurfaceInverse, null),
@@ -91,42 +90,39 @@ abstract final class AppSnackbar {
     required String message,
     String? actionLabel,
     VoidCallback? onActionPressed,
-  }) =>
-      show(
-        context,
-        message: message,
-        tone: AppMessageTone.success,
-        actionLabel: actionLabel,
-        onActionPressed: onActionPressed,
-      );
+  }) => show(
+    context,
+    message: message,
+    tone: AppMessageTone.success,
+    actionLabel: actionLabel,
+    onActionPressed: onActionPressed,
+  );
 
   static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> showError(
     BuildContext context, {
     required String message,
     String? actionLabel,
     VoidCallback? onActionPressed,
-  }) =>
-      show(
-        context,
-        message: message,
-        tone: AppMessageTone.error,
-        actionLabel: actionLabel,
-        onActionPressed: onActionPressed,
-      );
+  }) => show(
+    context,
+    message: message,
+    tone: AppMessageTone.error,
+    actionLabel: actionLabel,
+    onActionPressed: onActionPressed,
+  );
 
   static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> showWarning(
     BuildContext context, {
     required String message,
     String? actionLabel,
     VoidCallback? onActionPressed,
-  }) =>
-      show(
-        context,
-        message: message,
-        tone: AppMessageTone.warning,
-        actionLabel: actionLabel,
-        onActionPressed: onActionPressed,
-      );
+  }) => show(
+    context,
+    message: message,
+    tone: AppMessageTone.warning,
+    actionLabel: actionLabel,
+    onActionPressed: onActionPressed,
+  );
 
   /// Dismisses whatever is on screen.
   static void hide(BuildContext context) =>
