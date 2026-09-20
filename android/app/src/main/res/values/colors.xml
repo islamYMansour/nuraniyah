@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The window background shown while the Flutter engine starts.
+         Matches AppColors.background so there is no white flash before the
+         splash screen draws its first frame. -->
+    <color name="noor_launch_background">#FAF8F5</color>
+</resources>

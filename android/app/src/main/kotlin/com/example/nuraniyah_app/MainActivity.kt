@@ -1,4 +1,4 @@
-package com.example.nuraniyah_app
+package app.smartguide.nuraniyah
 
 import io.flutter.embedding.android.FlutterActivity
 

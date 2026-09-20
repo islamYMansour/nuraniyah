@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "659842722019",
+    "project_id": "nooraniya-c7951",
+    "storage_bucket": "nooraniya-c7951.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659842722019:android:053fd480037e50004bfdd6",
+        "android_client_info": {
+          "package_name": "app.smartguide.nuraniyah"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhQFet6UxHOe83ScYAq3jnn2AKx_tUYBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659842722019:android:d88a860643d60c3d4bfdd6",
+        "android_client_info": {
+          "package_name": "com.example.nuraniyah_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhQFet6UxHOe83ScYAq3jnn2AKx_tUYBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
