@@ -47,56 +47,63 @@ class AppDialog extends StatelessWidget {
       elevation: AppElevation.level3,
       shape: AppShapes.dialog,
       insetPadding: const EdgeInsets.all(AppSpacing.xxl),
-      child: Padding(
-        padding: const EdgeInsets.all(AppSpacing.xxl),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            if (icon != null) ...<Widget>[
-              Center(
-                child: Container(
-                  width: AppSizing.avatarMedium,
-                  height: AppSizing.avatarMedium,
-                  decoration: BoxDecoration(
-                    color: colors.primaryContainer,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(
-                    icon,
-                    size: AppSizing.iconLarge,
-                    color: iconColor ?? colors.onPrimaryContainer,
+      // Without a ceiling a dialog tracks the window, and on a landscape
+      // tablet a two-line confirmation ends up a metre wide.
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: AppSizing.maxDialogWidth),
+        child: Padding(
+          padding: const EdgeInsets.all(AppSpacing.xxl),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              if (icon != null) ...<Widget>[
+                Center(
+                  child: Container(
+                    width: AppSizing.avatarMedium,
+                    height: AppSizing.avatarMedium,
+                    decoration: BoxDecoration(
+                      color: colors.primaryContainer,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      icon,
+                      size: AppSizing.iconLarge,
+                      color: iconColor ?? colors.onPrimaryContainer,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: AppSpacing.lg),
-            ],
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: typography.headlineSmall
-                  .copyWith(color: colors.textPrimary),
-            ),
-            if (content != null) ...<Widget>[
-              const SizedBox(height: AppSpacing.md),
-              content!,
-            ] else if (message != null) ...<Widget>[
-              const SizedBox(height: AppSpacing.md),
+                const SizedBox(height: AppSpacing.lg),
+              ],
               Text(
-                message!,
+                title,
                 textAlign: TextAlign.center,
-                style: typography.bodyMedium
-                    .copyWith(color: colors.textSecondary),
+                style: typography.headlineSmall.copyWith(
+                  color: colors.textPrimary,
+                ),
               ),
-            ],
-            if (actions.isNotEmpty) ...<Widget>[
-              const SizedBox(height: AppSpacing.sectionGap),
-              for (int i = 0; i < actions.length; i++) ...<Widget>[
-                if (i > 0) const SizedBox(height: AppSpacing.md),
-                actions[i],
+              if (content != null) ...<Widget>[
+                const SizedBox(height: AppSpacing.md),
+                content!,
+              ] else if (message != null) ...<Widget>[
+                const SizedBox(height: AppSpacing.md),
+                Text(
+                  message!,
+                  textAlign: TextAlign.center,
+                  style: typography.bodyMedium.copyWith(
+                    color: colors.textSecondary,
+                  ),
+                ),
+              ],
+              if (actions.isNotEmpty) ...<Widget>[
+                const SizedBox(height: AppSpacing.sectionGap),
+                for (int i = 0; i < actions.length; i++) ...<Widget>[
+                  if (i > 0) const SizedBox(height: AppSpacing.md),
+                  actions[i],
+                ],
               ],
             ],
-          ],
+          ),
         ),
       ),
     );
@@ -119,8 +126,9 @@ abstract final class AppDialogs {
     return showDialog<void>(
       context: context,
       barrierDismissible: isDismissible,
-      barrierColor: context.colors.scrim
-          .withValues(alpha: AppElevation.scrimOpacity),
+      barrierColor: context.colors.scrim.withValues(
+        alpha: AppElevation.scrimOpacity,
+      ),
       builder: (BuildContext dialogContext) => AppDialog(
         title: title,
         message: message,
@@ -152,8 +160,9 @@ abstract final class AppDialogs {
   }) {
     return showDialog<bool>(
       context: context,
-      barrierColor: context.colors.scrim
-          .withValues(alpha: AppElevation.scrimOpacity),
+      barrierColor: context.colors.scrim.withValues(
+        alpha: AppElevation.scrimOpacity,
+      ),
       builder: (BuildContext dialogContext) => AppDialog(
         title: title,
         message: message,
@@ -191,8 +200,9 @@ abstract final class AppDialogs {
     return showDialog<T>(
       context: context,
       barrierDismissible: isDismissible,
-      barrierColor: context.colors.scrim
-          .withValues(alpha: AppElevation.scrimOpacity),
+      barrierColor: context.colors.scrim.withValues(
+        alpha: AppElevation.scrimOpacity,
+      ),
       builder: builder,
     );
   }

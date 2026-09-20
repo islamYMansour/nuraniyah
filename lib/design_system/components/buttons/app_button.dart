@@ -64,6 +64,7 @@ class AppButton extends StatelessWidget {
     this.isLoading = false,
     this.isEnabled = true,
     this.isFullWidth = false,
+    this.maxWidth = AppSizing.maxButtonWidth,
     this.focusNode,
     this.autofocus = false,
     this.semanticLabel,
@@ -80,6 +81,7 @@ class AppButton extends StatelessWidget {
     this.isLoading = false,
     this.isEnabled = true,
     this.isFullWidth = false,
+    this.maxWidth = AppSizing.maxButtonWidth,
     this.focusNode,
     this.autofocus = false,
     this.semanticLabel,
@@ -96,6 +98,7 @@ class AppButton extends StatelessWidget {
     this.isLoading = false,
     this.isEnabled = true,
     this.isFullWidth = false,
+    this.maxWidth = AppSizing.maxButtonWidth,
     this.focusNode,
     this.autofocus = false,
     this.semanticLabel,
@@ -112,6 +115,7 @@ class AppButton extends StatelessWidget {
     this.isLoading = false,
     this.isEnabled = true,
     this.isFullWidth = false,
+    this.maxWidth = AppSizing.maxButtonWidth,
     this.focusNode,
     this.autofocus = false,
     this.semanticLabel,
@@ -128,6 +132,7 @@ class AppButton extends StatelessWidget {
     this.isLoading = false,
     this.isEnabled = true,
     this.isFullWidth = false,
+    this.maxWidth = AppSizing.maxButtonWidth,
     this.focusNode,
     this.autofocus = false,
     this.semanticLabel,
@@ -144,6 +149,7 @@ class AppButton extends StatelessWidget {
     this.isLoading = false,
     this.isEnabled = true,
     this.isFullWidth = false,
+    this.maxWidth = AppSizing.maxButtonWidth,
     this.focusNode,
     this.autofocus = false,
     this.semanticLabel,
@@ -166,8 +172,15 @@ class AppButton extends StatelessWidget {
   /// Disables the button independently of [onPressed].
   final bool isEnabled;
 
-  /// Stretches the button to its parent's width.
+  /// Stretches the button to its parent's width, up to [maxWidth].
   final bool isFullWidth;
+
+  /// The ceiling a full-width button stops growing at.
+  ///
+  /// `isFullWidth` means "fill the column", not "span the window": on a
+  /// tablet a 1000pt key looks like a mistake and strands its label in the
+  /// middle of an empty bar. Pass [double.infinity] to opt out.
+  final double maxWidth;
 
   final FocusNode? focusNode;
   final bool autofocus;
@@ -176,61 +189,61 @@ class AppButton extends StatelessWidget {
   bool get _isInteractive => isEnabled && !isLoading && onPressed != null;
 
   double get _height => switch (size) {
-        AppButtonSize.small => AppSizing.buttonHeightSmall,
-        AppButtonSize.medium => AppSizing.buttonHeightMedium,
-        AppButtonSize.large => AppSizing.buttonHeightLarge,
-      };
+    AppButtonSize.small => AppSizing.buttonHeightSmall,
+    AppButtonSize.medium => AppSizing.buttonHeightMedium,
+    AppButtonSize.large => AppSizing.buttonHeightLarge,
+  };
 
   double get _horizontalPadding => switch (size) {
-        AppButtonSize.small => AppSpacing.xl,
-        AppButtonSize.medium => AppSpacing.xxl,
-        AppButtonSize.large => AppSpacing.buttonHorizontal,
-      };
+    AppButtonSize.small => AppSpacing.xl,
+    AppButtonSize.medium => AppSpacing.xxl,
+    AppButtonSize.large => AppSpacing.buttonHorizontal,
+  };
 
   double get _iconSize => switch (size) {
-        AppButtonSize.small => AppSizing.iconSmall,
-        AppButtonSize.medium => AppSizing.iconMedium,
-        AppButtonSize.large => AppSizing.iconLarge,
-      };
+    AppButtonSize.small => AppSizing.iconSmall,
+    AppButtonSize.medium => AppSizing.iconMedium,
+    AppButtonSize.large => AppSizing.iconLarge,
+  };
 
   TextStyle _textStyle(AppTypography typography) => switch (size) {
-        AppButtonSize.small => typography.labelLarge,
-        AppButtonSize.medium => typography.labelLarge,
-        AppButtonSize.large => typography.button,
-      };
+    AppButtonSize.small => typography.labelLarge,
+    AppButtonSize.medium => typography.labelLarge,
+    AppButtonSize.large => typography.button,
+  };
 
   _ButtonPalette _palette(AppColors colors) {
     if (!_isInteractive) {
       return switch (variant) {
-        AppButtonVariant.text ||
-        AppButtonVariant.outlined =>
-          _ButtonPalette(foreground: colors.textDisabled),
+        AppButtonVariant.text || AppButtonVariant.outlined => _ButtonPalette(
+          foreground: colors.textDisabled,
+        ),
         _ => _ButtonPalette(
-            background: colors.disabled,
-            foreground: colors.onDisabled,
-          ),
+          background: colors.disabled,
+          foreground: colors.onDisabled,
+        ),
       };
     }
     return switch (variant) {
       AppButtonVariant.primary => _ButtonPalette(
-          background: colors.primary,
-          foreground: colors.onPrimary,
-          slab: colors.primaryShadow,
-        ),
+        background: colors.primary,
+        foreground: colors.onPrimary,
+        slab: colors.primaryShadow,
+      ),
       AppButtonVariant.secondary => _ButtonPalette(
-          background: colors.secondary,
-          foreground: colors.onSecondary,
-          slab: colors.secondaryShadow,
-        ),
+        background: colors.secondary,
+        foreground: colors.onSecondary,
+        slab: colors.secondaryShadow,
+      ),
       AppButtonVariant.danger => _ButtonPalette(
-          background: colors.error,
-          foreground: colors.onError,
-          slab: colors.onErrorContainer,
-        ),
+        background: colors.error,
+        foreground: colors.onError,
+        slab: colors.onErrorContainer,
+      ),
       AppButtonVariant.outlined => _ButtonPalette(
-          foreground: colors.primaryStrong,
-          border: colors.borderStrong,
-        ),
+        foreground: colors.primaryStrong,
+        border: colors.borderStrong,
+      ),
       AppButtonVariant.text => _ButtonPalette(foreground: colors.textLink),
     };
   }
@@ -239,8 +252,9 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppColors colors = context.colors;
     final _ButtonPalette palette = _palette(colors);
-    final TextStyle textStyle =
-        _textStyle(context.typography).copyWith(color: palette.foreground);
+    final TextStyle textStyle = _textStyle(
+      context.typography,
+    ).copyWith(color: palette.foreground);
 
     final Widget content = Row(
       mainAxisSize: isFullWidth ? MainAxisSize.max : MainAxisSize.min,
@@ -266,7 +280,7 @@ class AppButton extends StatelessWidget {
       ],
     );
 
-    return AppPressable(
+    final Widget button = AppPressable(
       onPressed: _isInteractive ? onPressed : null,
       enabled: _isInteractive,
       focusNode: focusNode,
@@ -298,6 +312,17 @@ class AppButton extends StatelessWidget {
                 : content,
           ),
         ),
+      ),
+    );
+
+    if (!isFullWidth || !maxWidth.isFinite) {
+      return button;
+    }
+
+    return Align(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: maxWidth),
+        child: button,
       ),
     );
   }

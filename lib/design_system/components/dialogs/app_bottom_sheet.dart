@@ -57,8 +57,9 @@ class AppBottomSheet extends StatelessWidget {
                   Expanded(
                     child: Text(
                       title!,
-                      style: context.typography.titleLarge
-                          .copyWith(color: colors.textPrimary),
+                      style: context.typography.titleLarge.copyWith(
+                        color: colors.textPrimary,
+                      ),
                     ),
                   ),
                   ...actions,
@@ -66,7 +67,9 @@ class AppBottomSheet extends StatelessWidget {
               ),
             ),
           ],
-          Flexible(child: Padding(padding: padding, child: child)),
+          Flexible(
+            child: Padding(padding: padding, child: child),
+          ),
         ],
       ),
     );
@@ -90,9 +93,13 @@ abstract final class AppBottomSheets {
       enableDrag: isDismissible,
       showDragHandle: false,
       backgroundColor: colors.surface,
-      barrierColor:
-          colors.scrim.withValues(alpha: AppElevation.scrimOpacity),
+      barrierColor: colors.scrim.withValues(alpha: AppElevation.scrimOpacity),
       shape: AppShapes.sheet,
+      // A full-bleed sheet on a landscape tablet is a very wide, very short
+      // strip. Cap it and let showModalBottomSheet centre it.
+      constraints: context.isWide
+          ? const BoxConstraints(maxWidth: AppSizing.maxSheetWidth)
+          : null,
       // Keeps the sheet clear of the keyboard when it holds a text field.
       useSafeArea: true,
       builder: builder,

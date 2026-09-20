@@ -38,45 +38,59 @@ class AppEmptyState extends StatelessWidget {
     final AppColors colors = context.colors;
     final AppTypography typography = context.typography;
 
+    // The plate grows with the window so an empty screen does not read as a
+    // small graphic marooned in a large space.
+    final double plate = AppResponsive.value<double>(
+      context,
+      compact: AppSizing.avatarLarge * 1.5,
+      medium: AppSizing.avatarLarge * 1.75,
+      expanded: AppSizing.avatarLarge * 2,
+    );
+
     return Center(
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: AppSizing.maxContentWidth),
+        constraints: BoxConstraints(
+          maxWidth: context.breakpoint.contentMaxWidth,
+        ),
         child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.xxxl),
+          padding: EdgeInsets.all(context.sectionGap),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               illustration ??
                   Container(
-                    width: AppSizing.avatarLarge * 1.5,
-                    height: AppSizing.avatarLarge * 1.5,
+                    width: plate,
+                    height: plate,
                     decoration: BoxDecoration(
                       color: plateColor ?? colors.accentSky,
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
                       icon,
-                      size: AppSizing.iconXLarge,
+                      size: plate / 2.5,
                       color: iconColor ?? colors.onAccentSky,
                     ),
                   ),
-              const SizedBox(height: AppSpacing.sectionGap),
+              SizedBox(height: context.sectionGap),
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: typography.titleLarge.copyWith(color: colors.textPrimary),
+                style: typography.titleLarge.copyWith(
+                  color: colors.textPrimary,
+                ),
               ),
               if (description != null) ...<Widget>[
                 const SizedBox(height: AppSpacing.sm),
                 Text(
                   description!,
                   textAlign: TextAlign.center,
-                  style: typography.bodyMedium
-                      .copyWith(color: colors.textSecondary),
+                  style: typography.bodyMedium.copyWith(
+                    color: colors.textSecondary,
+                  ),
                 ),
               ],
               if (action != null) ...<Widget>[
-                const SizedBox(height: AppSpacing.sectionGap),
+                SizedBox(height: context.sectionGap),
                 action!,
               ],
             ],
